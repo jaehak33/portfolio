@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나의 포트폴리오</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>포트폴리오 - [당신의 이름]</title>
   <style>
     :root {
-      --primary-color: #3498db;
-      --bg-color: #f4f4f4;
-      --text-color: #333;
-      --card-bg: white;
+      --main-color: #1e88e5;
+      --bg-color: #f9fafb;
+      --card-bg: #ffffff;
+      --text-color: #212121;
+      --muted-color: #666;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -18,57 +20,66 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(to right, #3498db, #2980b9);
+      background-color: var(--main-color);
       color: white;
       padding: 60px 20px;
       text-align: center;
     }
 
     header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: 2.8em;
+      margin: 0;
     }
 
     header p {
-      font-size: 1.2em;
-      opacity: 0.9;
+      font-size: 1.1em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 10px;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
 
+    .section-title {
+      font-size: 1.8em;
+      font-weight: 600;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 10px;
+    }
+
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
 
     .project-card {
       background: var(--card-bg);
       border-radius: 10px;
+      box-shadow: 0 4px 12px var(--shadow);
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px var(--shadow);
     }
 
     .project-card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
 
@@ -77,33 +88,40 @@
     }
 
     .project-content h3 {
-      margin-top: 0;
-      color: var(--primary-color);
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: var(--main-color);
     }
 
     .project-content p {
       font-size: 0.95em;
+      color: var(--muted-color);
+    }
+
+    .project-links {
+      margin-top: 15px;
     }
 
     .project-links a {
       display: inline-block;
       margin-right: 15px;
-      color: var(--primary-color);
+      font-size: 0.9em;
       text-decoration: none;
+      color: var(--main-color);
       font-weight: bold;
-      margin-top: 10px;
     }
 
     footer {
       text-align: center;
       padding: 40px 20px;
-      background-color: #ecf0f1;
-      color: #555;
+      color: var(--muted-color);
+      font-size: 0.9em;
       margin-top: 60px;
+      border-top: 1px solid #ddd;
     }
 
     footer a {
-      color: #555;
+      color: var(--main-color);
       text-decoration: none;
       font-weight: bold;
     }
@@ -112,45 +130,45 @@
 <body>
 
   <header>
-    <h1>👋 안녕하세요, [당신의 이름]입니다</h1>
-    <p>웹 프론트엔드 개발과 UI/UX를 즐기는 개발자</p>
+    <h1>[당신의 이름]</h1>
+    <p>프론트엔드 개발자 | 웹 UI/UX 제작 경험 다수 | 깔끔한 코드와 사용자 경험을 지향</p>
   </header>
 
   <div class="container">
-    <h2 style="text-align:center;">📁 프로젝트 소개</h2>
+    <div class="section-title">프로젝트</div>
     <div class="projects">
 
       <div class="project-card">
-        <img src="images/todo1.png" alt="To-Do List 앱">
+        <img src="images/todo1.png" alt="To-Do List 앱 이미지">
         <div class="project-content">
-          <h3>To-Do List 앱</h3>
-          <p>할 일을 추가, 삭제, 저장할 수 있는 간단한 JavaScript 웹앱입니다.</p>
+          <h3>To-Do List 웹앱</h3>
+          <p>할 일을 추가/삭제/저장할 수 있는 간단한 JavaScript 기반 앱입니다. 로컬 스토리지를 사용해 데이터가 유지됩니다.</p>
           <div class="project-links">
-            <a href="https://yourusername.github.io/todo-app" target="_blank">🔗 결과 보기</a>
-            <a href="https://github.com/yourusername/todo-app" target="_blank">📂 GitHub</a>
+            <a href="https://yourusername.github.io/todo-app" target="_blank">결과 보기</a>
+            <a href="https://github.com/yourusername/todo-app" target="_blank">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/movie1.png" alt="영화 검색 앱">
+        <img src="images/movie1.png" alt="영화 검색 앱 이미지">
         <div class="project-content">
-          <h3>영화 검색 웹사이트</h3>
-          <p>TMDB API를 활용하여 실시간으로 영화 정보를 검색하는 React 기반 앱입니다.</p>
+          <h3>영화 검색 사이트</h3>
+          <p>TMDB API를 이용해 실시간으로 영화 정보를 검색할 수 있는 React 기반 웹 애플리케이션입니다.</p>
           <div class="project-links">
-            <a href="https://yourusername.github.io/movie-app" target="_blank">🔗 결과 보기</a>
-            <a href="https://github.com/yourusername/movie-app" target="_blank">📂 GitHub</a>
+            <a href="https://yourusername.github.io/movie-app" target="_blank">결과 보기</a>
+            <a href="https://github.com/yourusername/movie-app" target="_blank">GitHub</a>
           </div>
         </div>
       </div>
 
-      <!-- 더 많은 프로젝트를 여기에 복사해서 추가 가능 -->
+      <!-- 더 많은 프로젝트를 복사해서 추가하면 됨 -->
 
     </div>
   </div>
 
   <footer>
-    📫 Contact: <a href="mailto:your.email@example.com">your.email@example.com</a> |
+    Contact: <a href="mailto:your.email@example.com">your.email@example.com</a> | 
     GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a>
   </footer>
 
