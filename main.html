@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List 웹앱 - 상세 설명</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    a {
+      color: #f0f0f0;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+    }
+    a:hover {
+      border-color: #f0f0f0;
+    }
+
+    header {
+      border-bottom: 1px solid #333;
+      padding-bottom: 24px;
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+    header p {
+      font-weight: 300;
+      color: #bbb;
+      font-size: 1.2rem;
+      margin: 8px 0 0 0;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    .gallery img {
+      height: 180px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 2rem;
+      border-left: 4px solid #f0f0f0;
+      padding-left: 12px;
+      margin-bottom: 24px;
+      user-select: none;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #ccc;
+      margin: 0 0 20px 0;
+      user-select: text;
+    }
+
+    ul.tech-stack {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    ul.tech-stack li {
+      background-color: #1f1f1f;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: text;
+      box-shadow: 0 0 8px rgba(255 255 255 / 0.1);
+      transition: background-color 0.3s ease;
+    }
+    ul.tech-stack li:hover {
+      background-color: #333;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
+      border: 1.5px solid #f0f0f0;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f0f0f0;
+      background: transparent;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-back:hover {
+      background-color: #f0f0f0;
+      color: #121212;
+      border-color: #f0f0f0;
+    }
+
+    @media (max-width: 600px) {
+      .gallery img {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>To-Do List 웹앱</h1>
+    <p>심플하고 직관적인 할 일 관리 앱</p>
+  </header>
+
+  <section class="gallery">
+    <img src="images/todo1.png" alt="To-Do List 화면 1" />
+    <img src="images/todo2.png" alt="To-Do List 화면 2" />
+    <img src="images/todo3.png" alt="To-Do List 화면 3" />
+  </section>
+
+  <section>
+    <h2>프로젝트 소개</h2>
+    <p>
+      JavaScript와 HTML5를 활용한 To-Do List 웹 애플리케이션입니다. 로컬 스토리지를 이용하여 사용자 작업을 저장하며, 직관적인 UI로 쉽고 빠르게 할 일을 추가, 삭제, 관리할 수 있습니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>사용 기술</h2>
+    <ul class="tech-stack">
+      <li>JavaScript</li>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>LocalStorage</li>
+    </ul>
+  </section>
+
+  <a href="index.html" class="btn-back" aria-label="포트폴리오 메인으로 돌아가기">← 돌아가기</a>
+
+</body>
+</html>
