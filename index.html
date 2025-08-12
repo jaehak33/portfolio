@@ -2,128 +2,161 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>포트폴리오 - [당신의 이름]</title>
   <style>
-    :root {
-      --main-color: #1e88e5;
-      --bg-color: #f9fafb;
-      --card-bg: #ffffff;
-      --text-color: #212121;
-      --muted-color: #666;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
+    /* Reset & 기본 설정 */
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background: #fff;
+      color: #111;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 300;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+    }
+    a:hover {
+      border-color: #000;
     }
 
     header {
-      background-color: var(--main-color);
-      color: white;
-      padding: 60px 20px;
+      padding: 80px 20px 60px;
       text-align: center;
+      border-bottom: 1px solid #eee;
     }
 
     header h1 {
-      font-size: 2.8em;
-      margin: 0;
+      font-weight: 700;
+      font-size: 3.5rem;
+      margin: 0 0 10px 0;
+      letter-spacing: -1px;
     }
 
     header p {
-      font-size: 1.1em;
-      color: rgba(255, 255, 255, 0.85);
-      margin-top: 10px;
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: #555;
+      margin: 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
+    main {
+      max-width: 900px;
+      margin: 60px auto;
       padding: 0 20px;
     }
 
     .section-title {
-      font-size: 1.8em;
-      font-weight: 600;
-      margin-bottom: 30px;
-      border-bottom: 2px solid var(--main-color);
-      padding-bottom: 10px;
+      font-size: 2rem;
+      font-weight: 700;
+      border-left: 5px solid #000;
+      padding-left: 12px;
+      margin-bottom: 40px;
+      color: #000;
     }
 
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      gap: 40px;
     }
 
     .project-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px var(--shadow);
+      background: #fafafa;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
     }
-
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px var(--shadow);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.12);
     }
 
-    .project-card img {
+    .project-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      display: block;
+      filter: grayscale(10%);
+      transition: filter 0.3s ease;
+    }
+    .project-card:hover .project-image {
+      filter: grayscale(0%);
     }
 
     .project-content {
-      padding: 20px;
+      padding: 24px;
     }
 
     .project-content h3 {
-      margin: 0 0 10px;
-      font-size: 1.3em;
-      color: var(--main-color);
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 0 0 12px 0;
+      color: #000;
     }
 
     .project-content p {
-      font-size: 0.95em;
-      color: var(--muted-color);
-    }
-
-    .project-links {
-      margin-top: 15px;
+      color: #444;
+      font-weight: 300;
+      font-size: 1rem;
+      margin: 0 0 20px 0;
+      min-height: 68px; /* 일정한 카드 높이 유지 */
     }
 
     .project-links a {
-      display: inline-block;
-      margin-right: 15px;
-      font-size: 0.9em;
-      text-decoration: none;
-      color: var(--main-color);
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-right: 24px;
+      color: #111;
+      border-bottom: 1px solid transparent;
+    }
+    .project-links a:hover {
+      border-color: #111;
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
-      color: var(--muted-color);
-      font-size: 0.9em;
-      margin-top: 60px;
-      border-top: 1px solid #ddd;
+      padding: 50px 20px;
+      color: #666;
+      font-weight: 300;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
     }
 
     footer a {
-      color: var(--main-color);
-      text-decoration: none;
-      font-weight: bold;
+      color: #111;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+    footer a:hover {
+      border-color: #111;
+    }
+
+    /* 반응형 보정 */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      .project-content p {
+        min-height: auto;
+      }
     }
   </style>
 </head>
@@ -131,45 +164,47 @@
 
   <header>
     <h1>[당신의 이름]</h1>
-    <p>프론트엔드 개발자 | 웹 UI/UX 제작 경험 다수 | 깔끔한 코드와 사용자 경험을 지향</p>
+    <p>프론트엔드 개발자 | UI/UX 디자인 경험 | 사용자 중심의 깔끔한 코드와 인터페이스를 만듭니다.</p>
   </header>
 
-  <div class="container">
-    <div class="section-title">프로젝트</div>
-    <div class="projects">
+  <main>
+    <section>
+      <h2 class="section-title">프로젝트</h2>
+      <div class="projects">
 
-      <div class="project-card">
-        <img src="images/todo1.png" alt="To-Do List 앱 이미지">
-        <div class="project-content">
-          <h3>To-Do List 웹앱</h3>
-          <p>할 일을 추가/삭제/저장할 수 있는 간단한 JavaScript 기반 앱입니다. 로컬 스토리지를 사용해 데이터가 유지됩니다.</p>
-          <div class="project-links">
-            <a href="https://yourusername.github.io/todo-app" target="_blank">결과 보기</a>
-            <a href="https://github.com/yourusername/todo-app" target="_blank">GitHub</a>
+        <article class="project-card">
+          <img src="images/todo1.png" alt="To-Do List 웹앱" class="project-image" />
+          <div class="project-content">
+            <h3>To-Do List 웹앱</h3>
+            <p>JavaScript 기반의 심플한 할 일 관리 앱으로, 로컬 스토리지에 작업을 저장하여 지속성을 보장합니다.</p>
+            <div class="project-links">
+              <a href="https://yourusername.github.io/todo-app" target="_blank" rel="noopener noreferrer">결과 보기</a>
+              <a href="https://github.com/yourusername/todo-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="project-card">
-        <img src="images/movie1.png" alt="영화 검색 앱 이미지">
-        <div class="project-content">
-          <h3>영화 검색 사이트</h3>
-          <p>TMDB API를 이용해 실시간으로 영화 정보를 검색할 수 있는 React 기반 웹 애플리케이션입니다.</p>
-          <div class="project-links">
-            <a href="https://yourusername.github.io/movie-app" target="_blank">결과 보기</a>
-            <a href="https://github.com/yourusername/movie-app" target="_blank">GitHub</a>
+        <article class="project-card">
+          <img src="images/movie1.png" alt="영화 검색 웹사이트" class="project-image" />
+          <div class="project-content">
+            <h3>영화 검색 웹사이트</h3>
+            <p>TMDB API를 활용한 React 기반 영화 검색 사이트로, 빠른 검색과 직관적인 UI를 제공합니다.</p>
+            <div class="project-links">
+              <a href="https://yourusername.github.io/movie-app" target="_blank" rel="noopener noreferrer">결과 보기</a>
+              <a href="https://github.com/yourusername/movie-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- 필요시 프로젝트 추가 -->
+
       </div>
-
-      <!-- 더 많은 프로젝트를 복사해서 추가하면 됨 -->
-
-    </div>
-  </div>
+    </section>
+  </main>
 
   <footer>
     Contact: <a href="mailto:your.email@example.com">your.email@example.com</a> | 
-    GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a>
+    GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">yourusername</a>
   </footer>
 
 </body>
