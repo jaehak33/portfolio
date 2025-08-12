@@ -3,53 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>To-Do List 웹앱 - 상세 설명</title>
+  <title>To-Do List 웹앱 - 상세 페이지</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
-
     body {
-      margin: 0;
-      background-color: #121212;
-      color: #f0f0f0;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+      line-height: 1.7;
       padding: 40px 20px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    a {
-      color: #f0f0f0;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease;
-      cursor: pointer;
-    }
-    a:hover {
-      border-color: #f0f0f0;
-    }
-
-    header {
-      border-bottom: 1px solid #333;
-      padding-bottom: 24px;
-      margin-bottom: 40px;
-      user-select: none;
-    }
     header h1 {
-      font-weight: 600;
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: -0.04em;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
+
     header p {
-      font-weight: 300;
-      color: #bbb;
-      font-size: 1.2rem;
-      margin: 8px 0 0 0;
+      font-size: 1.1rem;
+      color: #bbbbbb;
+      margin-bottom: 40px;
     }
 
     .gallery {
@@ -57,18 +33,13 @@
       gap: 16px;
       overflow-x: auto;
       margin-bottom: 40px;
-      user-select: none;
     }
+
     .gallery img {
-      height: 180px;
+      height: 200px;
       border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
       flex-shrink: 0;
-      transition: transform 0.3s ease;
-      cursor: zoom-in;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
     }
 
     section {
@@ -76,69 +47,48 @@
     }
 
     h2 {
+      font-size: 1.5rem;
       font-weight: 600;
-      font-size: 2rem;
-      border-left: 4px solid #f0f0f0;
+      margin-bottom: 16px;
+      border-left: 4px solid #f5f5f5;
       padding-left: 12px;
-      margin-bottom: 24px;
-      user-select: none;
     }
 
-    p {
-      font-weight: 300;
+    p, li {
+      color: #d0d0d0;
       font-size: 1rem;
-      color: #ccc;
-      margin: 0 0 20px 0;
-      user-select: text;
     }
 
-    ul.tech-stack {
+    ul {
       list-style: none;
-      padding: 0;
+      padding-left: 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-    }
-    ul.tech-stack li {
-      background-color: #1f1f1f;
-      padding: 8px 16px;
-      border-radius: 24px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      user-select: text;
-      box-shadow: 0 0 8px rgba(255 255 255 / 0.1);
-      transition: background-color 0.3s ease;
-    }
-    ul.tech-stack li:hover {
-      background-color: #333;
+      gap: 12px;
     }
 
-    .btn-back {
+    ul li {
+      background-color: #2a2a2a;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    a.btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 12px 28px;
-      border: 1.5px solid #f0f0f0;
+      padding: 12px 24px;
+      border: 1px solid #f5f5f5;
       border-radius: 30px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #f0f0f0;
-      background: transparent;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      text-align: center;
+      font-weight: 500;
+      color: #f5f5f5;
       text-decoration: none;
-    }
-    .btn-back:hover {
-      background-color: #f0f0f0;
-      color: #121212;
-      border-color: #f0f0f0;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    @media (max-width: 600px) {
-      .gallery img {
-        height: 140px;
-      }
+    a.btn:hover {
+      background: #f5f5f5;
+      color: #1e1e1e;
     }
   </style>
 </head>
@@ -146,33 +96,35 @@
 
   <header>
     <h1>To-Do List 웹앱</h1>
-    <p>심플하고 직관적인 할 일 관리 앱</p>
+    <p>로컬 스토리지를 활용한 심플하고 직관적인 할 일 관리 앱</p>
   </header>
 
   <section class="gallery">
-    <img src="images/todo1.png" alt="To-Do List 화면 1" />
-    <img src="images/todo2.png" alt="To-Do List 화면 2" />
-    <img src="images/todo3.png" alt="To-Do List 화면 3" />
+    <img src="images/todo1.png" alt="앱 화면 1">
+    <img src="images/todo2.png" alt="앱 화면 2">
+    <img src="images/todo3.png" alt="앱 화면 3">
   </section>
 
   <section>
-    <h2>프로젝트 소개</h2>
+    <h2>프로젝트 설명</h2>
     <p>
-      JavaScript와 HTML5를 활용한 To-Do List 웹 애플리케이션입니다. 로컬 스토리지를 이용하여 사용자 작업을 저장하며, 직관적인 UI로 쉽고 빠르게 할 일을 추가, 삭제, 관리할 수 있습니다.
+      이 프로젝트는 바쁜 일상 속 할 일을 간편하게 관리할 수 있도록 만든 웹 기반 To-Do List입니다.
+      사용자가 입력한 할 일은 브라우저의 로컬 스토리지에 저장되어 새로고침이나 브라우저 종료 후에도 유지됩니다.
+      미니멀한 UI와 직관적인 UX를 통해 누구나 쉽게 사용할 수 있도록 설계했습니다.
     </p>
   </section>
 
   <section>
     <h2>사용 기술</h2>
-    <ul class="tech-stack">
-      <li>JavaScript</li>
+    <ul>
       <li>HTML5</li>
       <li>CSS3</li>
+      <li>JavaScript</li>
       <li>LocalStorage</li>
     </ul>
   </section>
 
-  <a href="index.html" class="btn-back" aria-label="포트폴리오 메인으로 돌아가기">← 돌아가기</a>
+  <a href="index.html" class="btn">← 메인으로 돌아가기</a>
 
 </body>
 </html>
