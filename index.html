@@ -5,54 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>포트폴리오 - [당신의 이름]</title>
   <style>
-    /* Reset & 기본 설정 */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+    /* Reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
-      background: #fff;
-      color: #111;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      font-weight: 300;
     }
-
     a {
-      color: #000;
+      color: #f0f0f0;
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s ease;
       cursor: pointer;
     }
     a:hover {
-      border-color: #000;
+      border-color: #f0f0f0;
     }
 
     header {
-      padding: 80px 20px 60px;
       text-align: center;
-      border-bottom: 1px solid #eee;
+      padding: 80px 20px 60px;
+      border-bottom: 1px solid #333;
     }
-
     header h1 {
-      font-weight: 700;
-      font-size: 3.5rem;
+      font-weight: 600;
+      font-size: 3.8rem;
       margin: 0 0 10px 0;
-      letter-spacing: -1px;
+      letter-spacing: -0.05em;
+      user-select: none;
     }
-
     header p {
       font-weight: 300;
-      font-size: 1.25rem;
-      color: #555;
-      margin: 0;
+      font-size: 1.3rem;
+      color: #bbb;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
+      user-select: none;
     }
 
     main {
@@ -60,75 +58,79 @@
       margin: 60px auto;
       padding: 0 20px;
     }
-
     .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      border-left: 5px solid #000;
-      padding-left: 12px;
-      margin-bottom: 40px;
-      color: #000;
+      font-weight: 600;
+      font-size: 2.3rem;
+      border-left: 4px solid #f0f0f0;
+      padding-left: 14px;
+      margin-bottom: 48px;
+      color: #f0f0f0;
+      user-select: none;
     }
 
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
+      gap: 48px;
     }
 
     .project-card {
-      background: #fafafa;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
       cursor: default;
+      user-select: none;
     }
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgb(0 0 0 / 0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.8);
     }
 
     .project-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      filter: brightness(0.75);
+      transition: filter 0.35s ease;
       display: block;
-      filter: grayscale(10%);
-      transition: filter 0.3s ease;
+      user-select: none;
     }
     .project-card:hover .project-image {
-      filter: grayscale(0%);
+      filter: brightness(1);
     }
 
     .project-content {
-      padding: 24px;
+      padding: 28px 24px;
     }
-
     .project-content h3 {
+      margin: 0 0 14px 0;
       font-weight: 600;
-      font-size: 1.4rem;
-      margin: 0 0 12px 0;
-      color: #000;
+      font-size: 1.6rem;
+      color: #fff;
+      user-select: text;
     }
-
     .project-content p {
-      color: #444;
+      margin: 0 0 22px 0;
       font-weight: 300;
       font-size: 1rem;
-      margin: 0 0 20px 0;
-      min-height: 68px; /* 일정한 카드 높이 유지 */
+      color: #ccc;
+      min-height: 72px;
+      user-select: text;
     }
 
     .project-links a {
       font-weight: 600;
       font-size: 0.95rem;
-      margin-right: 24px;
-      color: #111;
+      margin-right: 28px;
+      color: #f0f0f0;
       border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease;
+      user-select: text;
     }
     .project-links a:hover {
-      border-color: #111;
+      border-color: #f0f0f0;
     }
 
     footer {
@@ -137,22 +139,21 @@
       color: #666;
       font-weight: 300;
       font-size: 0.9rem;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #333;
+      user-select: none;
     }
-
     footer a {
-      color: #111;
-      font-weight: 500;
+      color: #f0f0f0;
+      font-weight: 600;
       border-bottom: 1px solid transparent;
     }
     footer a:hover {
-      border-color: #111;
+      border-color: #f0f0f0;
     }
 
-    /* 반응형 보정 */
     @media (max-width: 480px) {
       header h1 {
-        font-size: 2.4rem;
+        font-size: 2.8rem;
       }
       .project-content p {
         min-height: auto;
@@ -164,7 +165,7 @@
 
   <header>
     <h1>[당신의 이름]</h1>
-    <p>프론트엔드 개발자 | UI/UX 디자인 경험 | 사용자 중심의 깔끔한 코드와 인터페이스를 만듭니다.</p>
+    <p>프론트엔드 개발자 | UI/UX 전문 | 정교하고 깔끔한 코드를 통해 최고의 사용자 경험을 만듭니다.</p>
   </header>
 
   <main>
@@ -176,7 +177,7 @@
           <img src="images/todo1.png" alt="To-Do List 웹앱" class="project-image" />
           <div class="project-content">
             <h3>To-Do List 웹앱</h3>
-            <p>JavaScript 기반의 심플한 할 일 관리 앱으로, 로컬 스토리지에 작업을 저장하여 지속성을 보장합니다.</p>
+            <p>로컬 스토리지를 활용하여 할 일을 저장하고 관리하는 심플한 JavaScript 기반 앱입니다.</p>
             <div class="project-links">
               <a href="https://yourusername.github.io/todo-app" target="_blank" rel="noopener noreferrer">결과 보기</a>
               <a href="https://github.com/yourusername/todo-app" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -188,7 +189,7 @@
           <img src="images/movie1.png" alt="영화 검색 웹사이트" class="project-image" />
           <div class="project-content">
             <h3>영화 검색 웹사이트</h3>
-            <p>TMDB API를 활용한 React 기반 영화 검색 사이트로, 빠른 검색과 직관적인 UI를 제공합니다.</p>
+            <p>React와 TMDB API를 활용해 빠르고 직관적인 영화 검색 환경을 제공합니다.</p>
             <div class="project-links">
               <a href="https://yourusername.github.io/movie-app" target="_blank" rel="noopener noreferrer">결과 보기</a>
               <a href="https://github.com/yourusername/movie-app" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -196,7 +197,7 @@
           </div>
         </article>
 
-        <!-- 필요시 프로젝트 추가 -->
+        <!-- 프로젝트 더 추가 가능 -->
 
       </div>
     </section>
