@@ -2,65 +2,97 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>나의 포트폴리오</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px auto;
-      max-width: 800px;
-      padding: 20px;
-      background: #f9f9f9;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
       color: #333;
     }
-    h1, h2 {
-      color: #2c3e50;
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
     .project {
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     .project img {
       max-width: 100%;
-      height: auto;
-      margin-top: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
     }
-    .contact {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #555;
+    .project h2 {
+      margin-top: 0;
+    }
+    .project a {
+      text-decoration: none;
+      color: #3498db;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <h1>👋 안녕하세요! 저는 [당신의 이름]입니다.</h1>
-  <p>프론트엔드 개발자 지망생으로 다양한 웹 프로젝트를 경험했습니다.<br>
-     이 페이지는 저의 주요 작업물을 정리한 포트폴리오입니다.</p>
+  <header>
+    <h1>👋 안녕하세요, 저는 입니다</h1>
+    <p>웹 프론트엔드 & 프로젝트 제작을 좋아하는 개발자</p>
+  </header>
 
-  <h2>📌 프로젝트</h2>
+  <div class="container">
 
-  <div class="project">
-    <h3>✔️ To-Do List 앱</h3>
-    <p><strong>기술 스택:</strong> HTML, CSS, JavaScript</p>
-    <p>할 일을 추가, 수정, 삭제할 수 있는 웹 애플리케이션입니다.</p>
-    <img src="images/todo1.png" alt="To-Do 앱 첫 화면">
-    <img src="images/todo2.png" alt="To-Do 앱 할 일 추가 화면">
-    <p><a href="https://github.com/yourusername/todo-app">🔗 GitHub 저장소 보기</a></p>
+    <div class="project">
+      <h2>📌 프로젝트 1: To-Do List 앱</h2>
+      <p>할 일을 추가하고 관리할 수 있는 간단한 웹앱입니다.</p>
+      <ul>
+        <li>✔️ JavaScript 로직</li>
+        <li>💾 로컬 스토리지 저장</li>
+        <li>🎨 반응형 UI</li>
+      </ul>
+      <img src="images/todo1.png" alt="To-Do 앱 화면">
+      <p><a href="https://yourusername.github.io/todo-app">👉 결과 보기</a> |
+         <a href="https://github.com/yourusername/todo-app">GitHub 코드</a></p>
+    </div>
+
+    <div class="project">
+      <h2>🎬 프로젝트 2: 영화 검색 사이트</h2>
+      <p>TMDB API를 활용하여 최신 영화 정보를 검색할 수 있습니다.</p>
+      <img src="images/movie1.png" alt="영화 검색 프로젝트 화면">
+      <p><a href="https://yourusername.github.io/movie-app">👉 결과 보기</a> |
+         <a href="https://github.com/yourusername/movie-app">GitHub 코드</a></p>
+    </div>
+
   </div>
 
-  <div class="project">
-    <h3>✔️ 영화 검색 웹사이트</h3>
-    <p><strong>기술 스택:</strong> React, TMDB API</p>
-    <p>TMDB API를 활용하여 영화 정보를 검색하고 볼 수 있는 사이트입니다.</p>
-    <img src="images/movie1.png" alt="영화 검색 화면">
-    <p><a href="https://yourusername.github.io/movie-app">🌐 결과 보기</a></p>
-  </div>
-
-  <div class="contact">
-    📬 Contact: your.email@example.com | GitHub: <a href="https://github.com/yourusername">yourusername</a>
-  </div>
+  <footer>
+    📧 Contact: your.email@example.com | GitHub: <a href="https://github.com/yourusername">yourusername</a>
+  </footer>
 
 </body>
 </html>
