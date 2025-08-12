@@ -3,213 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>포트폴리오 - [당신의 이름]</title>
+  <title>To-Do List 웹앱 - 상세 페이지</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
-
-    /* Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
     body {
-      margin: 0;
-      background-color: #1e1e1e;
-      color: #f0f0f0;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a {
-      color: #f0f0f0;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease;
-      cursor: pointer;
-    }
-    a:hover {
-      border-color: #f0f0f0;
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px 60px;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      font-weight: 600;
-      font-size: 3.8rem;
-      margin: 0 0 10px 0;
-      letter-spacing: -0.05em;
-      user-select: none;
-    }
-    header p {
-      font-weight: 300;
-      font-size: 1.3rem;
-      color: #bbb;
-      max-width: 600px;
-      margin: 0 auto;
-      user-select: none;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    .section-title {
-      font-weight: 600;
-      font-size: 2.3rem;
-      border-left: 4px solid #f0f0f0;
-      padding-left: 14px;
-      margin-bottom: 48px;
-      color: #f0f0f0;
-      user-select: none;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 48px;
-    }
-
-    .project-card {
       background-color: #1e1e1e;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-      overflow: hidden;
-      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
-      cursor: default;
-      user-select: none;
-    }
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.8);
+      color: #f5f5f5;
+      line-height: 1.7;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .project-image {
-      width: 100%;
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #bbbbbb;
+      margin-bottom: 40px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+
+    .gallery img {
       height: 200px;
-      object-fit: cover;
-      filter: brightness(0.75);
-      transition: filter 0.35s ease;
-      display: block;
-      user-select: none;
-    }
-    .project-card:hover .project-image {
-      filter: brightness(1);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      flex-shrink: 0;
     }
 
-    .project-content {
-      padding: 28px 24px;
+    section {
+      margin-bottom: 40px;
     }
-    .project-content h3 {
-      margin: 0 0 14px 0;
+
+    h2 {
+      font-size: 1.5rem;
       font-weight: 600;
-      font-size: 1.6rem;
-      color: #fff;
-      user-select: text;
+      margin-bottom: 16px;
+      border-left: 4px solid #f5f5f5;
+      padding-left: 12px;
     }
-    .project-content p {
-      margin: 0 0 22px 0;
-      font-weight: 300;
+
+    p, li {
+      color: #d0d0d0;
       font-size: 1rem;
-      color: #ccc;
-      min-height: 72px;
-      user-select: text;
     }
 
-    .project-links a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-right: 28px;
-      color: #f0f0f0;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.25s ease;
-      user-select: text;
-    }
-    .project-links a:hover {
-      border-color: #f0f0f0;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    footer {
-      text-align: center;
-      padding: 50px 20px;
-      color: #666;
-      font-weight: 300;
-      font-size: 0.9rem;
-      border-top: 1px solid #333;
-      user-select: none;
-    }
-    footer a {
-      color: #f0f0f0;
-      font-weight: 600;
-      border-bottom: 1px solid transparent;
-    }
-    footer a:hover {
-      border-color: #f0f0f0;
+    ul li {
+      background-color: #2a2a2a;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
     }
 
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2.8rem;
-      }
-      .project-content p {
-        min-height: auto;
-      }
+    a.btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      border: 1px solid #f5f5f5;
+      border-radius: 30px;
+      font-weight: 500;
+      color: #f5f5f5;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    a.btn:hover {
+      background: #f5f5f5;
+      color: #1e1e1e;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>[당신의 이름]</h1>
-    <p>프론트엔드 개발자 | UI/UX 전문 | 정교하고 깔끔한 코드를 통해 최고의 사용자 경험을 만듭니다.</p>
+    <h1>To-Do List 웹앱</h1>
+    <p>로컬 스토리지를 활용한 심플하고 직관적인 할 일 관리 앱</p>
   </header>
 
-  <main>
-    <section>
-      <h2 class="section-title">프로젝트</h2>
-      <div class="projects">
+  <section class="gallery">
+    <img src="images/todo1.png" alt="앱 화면 1">
+    <img src="images/todo2.png" alt="앱 화면 2">
+    <img src="images/todo3.png" alt="앱 화면 3">
+  </section>
 
-        <article class="project-card">
-          <img src="images/todo1.png" alt="To-Do List 웹앱" class="project-image" />
-          <div class="project-content">
-            <h3>To-Do List 웹앱</h3>
-            <p>로컬 스토리지를 활용하여 할 일을 저장하고 관리하는 심플한 JavaScript 기반 앱입니다.</p>
-            <div class="project-links">
-              <a href="main.html" target="_blank" rel="noopener noreferrer">결과 보기</a>
-              <a href="https://github.com/yourusername/todo-app" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-        </article>
+  <section>
+    <h2>프로젝트 설명</h2>
+    <p>
+      이 프로젝트는 바쁜 일상 속 할 일을 간편하게 관리할 수 있도록 만든 웹 기반 To-Do List입니다.
+      사용자가 입력한 할 일은 브라우저의 로컬 스토리지에 저장되어 새로고침이나 브라우저 종료 후에도 유지됩니다.
+      미니멀한 UI와 직관적인 UX를 통해 누구나 쉽게 사용할 수 있도록 설계했습니다.
+    </p>
+  </section>
 
-        <article class="project-card">
-          <img src="images/movie1.png" alt="영화 검색 웹사이트" class="project-image" />
-          <div class="project-content">
-            <h3>영화 검색 웹사이트</h3>
-            <p>React와 TMDB API를 활용해 빠르고 직관적인 영화 검색 환경을 제공합니다.</p>
-            <div class="project-links">
-              <a href="main2.html" target="_blank" rel="noopener noreferrer">결과 보기</a>
-              <a href="https://github.com/yourusername/movie-app" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-        </article>
+  <section>
+    <h2>사용 기술</h2>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript</li>
+      <li>LocalStorage</li>
+    </ul>
+  </section>
 
-        <!-- 프로젝트 더 추가 가능 -->
-
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Contact: <a href="mailto:your.email@example.com">your.email@example.com</a> | 
-    GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">yourusername</a>
-  </footer>
+  <a href="index.html" class="btn">← 메인으로 돌아가기</a>
 
 </body>
 </html>
-
-
-
