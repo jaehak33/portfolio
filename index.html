@@ -1,161 +1,75 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>정보보안 일대기</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>정보보안 포트폴리오</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #1e1e1e; 
-      color: #f5f5f5;
-      line-height: 1.6;
-      padding: 40px 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    header h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: #bbbbbb;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 500;
-      margin-bottom: 20px;
-      border-left: 4px solid #f5f5f5;
-      padding-left: 12px;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .project-card {
-      border-radius: 12px;
-      background-color: #2a2a2a;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      padding: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .project-content h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .project-content p {
-      font-size: 0.95rem;
-      color: #cccccc;
-      margin-bottom: 14px;
-    }
-
-    .project-links a {
-      display: inline-block;
-      margin-right: 10px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #f5f5f5;
-      padding: 6px 14px;
-      border: 1px solid #f5f5f5;
-      border-radius: 20px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .project-links a:hover {
-      background-color: #f5f5f5;
-      color: #1e1e1e;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .project-content p {
-        font-size: 0.9rem;
-      }
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    header { background: #333; color: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    header a { color: #fff; margin: 0 10px; text-decoration: none; }
+    .intro { padding: 40px; text-align: center; background: #f4f4f4; }
+    .projects { padding: 20px; }
+    .project { margin-bottom: 30px; }
+    .project h3 { margin-bottom: 10px; }
+    .project .tech { font-size: 0.9em; color: #555; }
+    footer { background: #333; color: #fff; padding: 20px; text-align: center; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>정재학</h1>
-    <p>화이트 해커를 꿈꾸는</p>
+    <div class="logo">logo</div>
+    <nav>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+    </nav>
   </header>
 
-  <main>
-    <section>
-      <h2 class="section-title">정보보안 프로젝트</h2>
-      <div class="projects">
+  <section class="intro">
+    <h1>Securing Digital Infrastructure</h1>
+    <p>Specialized in network security, malware analysis, and cloud security architecture. Building robust security solutions for the modern digital landscape.</p>
+    <p><a href="#projects">View Projects</a></p>
+  </section>
 
-        <!-- 프로젝트 1 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>네트워크 보안</h3>
-            <p>여러 솔루션을 사용해 탐지 및 방화벽 구축</p>
-            <div class="project-links">
-              <a href="main.html">결과 보기</a>
-              <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </article>
+  <section id="projects" class="projects">
+    <h2>FEATURED WORK</h2>
 
-        <!-- 프로젝트 2 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>시스템 보안</h3>
-            <p>시스템 내부 방어 체계 강화 및 취약점 대응</p>
-            <div class="project-links">
-              <a href="websecurity.html">결과 보기</a>
-              <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </article>
+    <div class="project">
+      <h3><a href="detail_network.html">네트워크 보안 모니터링 시스템</a></h3>
+      <p class="tech">Python · Wireshark · Snort</p>
+    </div>
 
-        <!-- 프로젝트 3 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>모의 해킹</h3>
-            <p>웹/서버 환경에서의 취약점 분석 및 침투 테스트</p>
-            <div class="project-links">
-              <a href="websecurity.html">결과 보기</a>
-              <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </article>
+    <div class="project">
+      <h3><a href="detail_webapp.html">웹 애플리케이션 취약점 스캐너</a></h3>
+      <p class="tech">JavaScript · Burp Suite · OWASP ZAP</p>
+    </div>
 
-      </div>
-    </section>
-  </main>
+    <div class="project">
+      <h3><a href="detail_malware.html">악성코드 분석 플랫폼</a></h3>
+      <p class="tech">C++ · IDA Pro · Cuckoo</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="detail_blockchain.html">블록체인 보안 감사 도구</a></h3>
+      <p class="tech">Solidity · Web3.js · Mythril</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="detail_incident.html">사이버 인시던트 대응 시스템</a></h3>
+      <p class="tech">Python · Elasticsearch · MISP</p>
+    </div>
+
+    <div class="project">
+      <h3><a href="detail_cloud.html">클라우드 보안 아키텍처</a></h3>
+      <p class="tech">AWS · Terraform · CloudTrail</p>
+    </div>
+
+  </section>
+
+  <footer>
+    logo | 뒤로 가기
+  </footer>
 
 </body>
 </html>
