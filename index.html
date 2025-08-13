@@ -68,110 +68,174 @@
   <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <!-- 프로젝트 카드 1 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project1')">
-      <img src="images/1.png" alt="Project1" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project One</h3>
-        <p class="text-gray-600">Network security monitoring system development.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 2 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project2')">
-      <img src="https://via.placeholder.com/400x250" alt="Project2" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Two</h3>
-        <p class="text-gray-600">Malware analysis automation using Python.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 3 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project3')">
-      <img src="https://via.placeholder.com/400x250" alt="Project3" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Three</h3>
-        <p class="text-gray-600">Cloud security architecture design and implementation.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 4 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project4')">
-      <img src="https://via.placeholder.com/400x250" alt="Project4" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Four</h3>
-        <p class="text-gray-600">Web application penetration testing and reporting.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 5 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project5')">
-      <img src="https://via.placeholder.com/400x250" alt="Project5" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Five</h3>
-        <p class="text-gray-600">SIEM integration and alert automation setup.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 6 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project6')">
-      <img src="https://via.placeholder.com/400x250" alt="Project6" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Six</h3>
-        <p class="text-gray-600">Cloud IAM policy management and security audit.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-</div> <!-- /main-page -->
-
-<!-- 상세 페이지들 -->
 <div id="project1" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" 
-        class="mb-6 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-500 transition flex items-center space-x-2">
-  <i class="ri-arrow-left-line"></i>
-  <span>Back</span>
-</button>
+          class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project One</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project1" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Network security monitoring system development. Implemented intrusion detection, traffic monitoring, and alerting features for enterprise networks.</p>
+  <div class="mb-6">
+    <img src="images/1_main.png" alt="Project1 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/1_1.png" alt="Project1-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/1_2.png" alt="Project1-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/1_3.png" alt="Project1-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
 </div>
 
+<!-- Project 2 -->
 <div id="project2" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <button onclick="showMainPage()" 
+          class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project Two</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project2" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Malware analysis automation using Python. Automated unpacking, sandbox execution, and behavior logging to improve malware investigation efficiency.</p>
+  <div class="mb-6">
+    <img src="images/2_main.png" alt="Project2 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/2_1.png" alt="Project2-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/2_2.png" alt="Project2-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/2_3.png" alt="Project2-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
 </div>
 
+<!-- Project 3 -->
 <div id="project3" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project Three</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project3" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Cloud security architecture design and implementation. Designed multi-account architecture with proper network segmentation, IAM policies, and security controls.</p>
+  <div class="mb-6">
+    <img src="images/3_main.png" alt="Project3 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/3_1.png" alt="Project3-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/3_2.png" alt="Project3-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/3_3.png" alt="Project3-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
 </div>
 
+<!-- Project 4 -->
 <div id="project4" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project Four</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project4" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Web application penetration testing and reporting. Conducted full security assessment including XSS, SQLi, and authentication bypass scenarios, and delivered detailed reports.</p>
+  <div class="mb-6">
+    <img src="images/4_main.png" alt="Project4 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/4_1.png" alt="Project4-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/4_2.png" alt="Project4-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/4_3.png" alt="Project4-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
 </div>
 
+<!-- Project 5 -->
 <div id="project5" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project Five</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project5" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">SIEM integration and alert automation setup. Configured multiple log sources, correlation rules, and automated incident notifications for faster detection.</p>
+  <div class="mb-6">
+    <img src="images/5_main.png" alt="Project5 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/5_1.png" alt="Project5-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/5_2.png" alt="Project5-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/5_3.png" alt="Project5-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
 </div>
 
+<!-- Project 6 -->
 <div id="project6" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
   <h2 class="text-3xl font-bold mb-4">Project Six</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project6" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Cloud IAM policy management and security audit. Audited permissions, enforced least privilege, and implemented automated compliance checks across accounts.</p>
+  <div class="mb-6">
+    <img src="images/6_main.png" alt="Project6 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+      <img src="images/6_1.png" alt="Project6-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    </div>
+    <div>
+      <img src="images/6_2.png" alt="Project6-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    </div>
+    <div>
+      <img src="images/6_3.png" alt="Project6-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
+      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    </div>
+  </div>
+</div>
+
+<!-- 전체 이미지 모달 -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <span class="absolute top-4 right-4 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
+  <img id="modalImage" src="" alt="Full Image" class="max-h-full max-w-full rounded-lg shadow-lg">
+  <p id="modalCaption" class="text-white mt-4 text-center"></p>
 </div>
 
 <script>
@@ -188,10 +252,24 @@ function showMainPage(){
   document.querySelectorAll('.detail-page').forEach(p=>{p.style.display='none'; p.classList.remove('active');});
   window.scrollTo(0,0);
 }
+
+// 모달 이미지 열기/닫기
+function openModal(img){
+  document.getElementById('modalImage').src = img.src;
+  document.getElementById('modalCaption').textContent = img.nextElementSibling ? img.nextElementSibling.textContent : '';
+  document.getElementById('imageModal').classList.remove('hidden');
+}
+function closeModal(){
+  document.getElementById('imageModal').classList.add('hidden');
+}
 </script>
-<a href="https://github.com/jaehak33/portfolio" class="github-button">
-  GitHub
+
+<a href="https://github.com/jaehak33"
+   class="fixed bottom-6 right-6 bg-black text-white px-5 py-3 rounded-full shadow-lg hover:bg-gray-800 flex items-center space-x-2 transition">
+  <i class="ri-github-fill text-lg"></i>
+  <span>GitHub</span>
 </a>
 </body>
 </html>
+
 
