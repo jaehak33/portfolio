@@ -26,26 +26,53 @@
 
   <!-- 갤러리 -->
   <div class="grid grid-cols-6 md:grid-cols-6 gap-4 mb-6">
-    <div>
-      <img src="images/2.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">특정 HTTP 탐지</p>
+     <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/2.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 HTTP 탐지">
     </div>
-    <div>
-      <img src="images/3.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">특정 ICMP 탐지</p>
-    </div>
-    <div>
-      <img src="images/4.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">Rand-source DDOs 탐지</p>
-    </div>
-    <div>
-      <img src="images/5.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">특정 구문 Injection 공격 탐지</p>
-    </div>
-    <div>
-      <img src="images/6.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">SYN Flag Scanning 탐지</p>
+    <p class="text-gray-600 text-sm text-center mt-2">특정 HTTP 탐지</p>
   </div>
+
+  <!-- 카드 2 -->
+  <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/3.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 ICMP 탐지">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">특정 ICMP 탐지</p>
+  </div>
+
+  <!-- 카드 3 -->
+  <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/4.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Rand-source DDoS 탐지">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">Rand-source DDoS 탐지</p>
+  </div>
+
+  <!-- 카드 4 -->
+  <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/5.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Injection 공격 탐지">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">특정 구문 Injection 공격 탐지</p>
+  </div>
+
+  <!-- 카드 5 -->
+  <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/6.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="SYN Flag Scanning 탐지">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">SYN Flag Scanning 탐지</p>
+  </div>
+
+  <!-- 카드 6 -->
+  <div class="flex flex-col h-[220px] border p-2 rounded">
+    <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="images/7.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="추가 탐지 항목">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">추가 탐지 항목</p>
+  </div>
+</div>
 
   <!-- 설명 -->
   <section class="mb-6">
@@ -95,6 +122,7 @@ function closeModal(){
 
 </body>
 </html>
+
 
 
 
