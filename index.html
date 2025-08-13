@@ -49,9 +49,9 @@
 
     <!-- Project Cards -->
     <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project1')">
-      <img src="images/1_main.png" alt="Project1" class="rounded-lg mb-4">
-      <h3 class="text-xl font-bold mb-2">Project One</h3>
-      <p class="text-gray-600">대표 이미지 설명</p>
+      <img src="images/1.png" alt="Project1" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">네트워크보안</h3>
+      <p class="text-gray-600">여러 솔루션을 사용해 탐지 및 방화벽 구축</p>
     </div>
 
     <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project2')">
@@ -89,7 +89,6 @@
 </div>
 
 <!-- 상세페이지 섹션 -->
-<!-- Project 1 ~ 6 Detail Pages -->
 <div id="project1" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" 
           class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
@@ -98,12 +97,40 @@
   <h2 class="text-3xl font-bold mb-4">Project One</h2>
   <div class="mb-6">
     <img src="images/1_main.png" alt="Project1 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
-    <p class="text-gray-700 mt-2">대표 이미지 설명</p>
+    <p class="text-gray-700 mt-2">전체적인 토폴로지</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <img src="images/1_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    <img src="images/1_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    <img src="images/1_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
+    <img src="images/2.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">특정 HTTP 탐지</p>
+    <img src="images/3.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">특정 ICMP 탐지</p>
+    <img src="images/4.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">Rand-source DDos 탐지</p>
+    <img src="images/5.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">특정 구문 Injection 공격 탐지</p>
+    <img src="images/6.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">SYN Flag Scanning 탐지</p>
+     
+    <section>
+    <h2>설명</h2>
+    <p>Cisco-Asav 방화벽 설정을 통해 Security-Level에 따른 정책설정을 통해 트래픽을 허용해 주는 것을 수행했습니다.<br>
+       방화벽 설정 예시 : access-list 100 exetended permit tcp host 192.168.40.1 host 192.168.50.2 eq telnet<br>
+       <br>
+       Pfsense 설정을 통해 Open-VPN 설정도 수행했습니다.<br>
+       <br>
+       Snort 및 Security Onion 등 다양한 도구를 활용하여 특정 주소에서 HTTP나 ICMP를 탐지하고, 다양한 해킹 기법에 대한 탐지를 수행했습니다.<br>
+       Snort 대표 룰 예시 : alert tcp 192.168.16.105 -> 192.168.16.188 80 (msg:"Incoming HTTP"; sid:100007; rev:1;)<br>
+     </p>
+  </section>
+    
+    <section>
+    <h2>사용 기술</h2>
+    <ul>
+      <li>Kali</li>
+      <li>Snort</li>
+      <li>Security Onion</li>
+      <li>Ossec</li>
+      <li>Zabbix</li>
+      <li>Open VPN</li>
+      <li>Cisco-Asav</li>
+      <li>Pfsense-Open VPN</li>
+    </ul>
+  </section>
   </div>
 </div>
 
@@ -233,3 +260,4 @@ function closeModal(){
 
 </body>
 </html>
+
