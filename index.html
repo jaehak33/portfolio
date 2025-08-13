@@ -1,75 +1,779 @@
+
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>정보보안 포트폴리오</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-    header { background: #333; color: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-    header a { color: #fff; margin: 0 10px; text-decoration: none; }
-    .intro { padding: 40px; text-align: center; background: #f4f4f4; }
-    .projects { padding: 20px; }
-    .project { margin-bottom: 30px; }
-    .project h3 { margin-bottom: 10px; }
-    .project .tech { font-size: 0.9em; color: #555; }
-    footer { background: #333; color: #fff; padding: 20px; text-align: center; }
-  </style>
+<head><script src="https://static.readdy.ai/static/e.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정보보안 포트폴리오</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1f2937',
+secondary: '#6366f1'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.project-card {
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes fadeIn {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.bg-grid-pattern {
+background-image: linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+background-size: 40px 40px;
+}
+.detail-page {
+display: none;
+}
+.detail-page.active {
+display: block;
+}
+</style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
+<div id="main-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary">logo</div>
+<div class="flex space-x-8">
+<a href="#projects" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Projects</a>
+<a href="#about" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">About</a>
+</div>
+</div>
+</nav>
+</header>
+<section class="min-h-screen relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
+<div class="absolute inset-0 bg-grid-pattern opacity-[0.015]"></div>
+<div class="max-w-7xl mx-auto px-6 pt-32 pb-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<h1 class="text-6xl font-bold text-primary leading-tight fade-in">
+Securing Digital <br/>
+<span class="text-secondary">Infrastructure</span>
+</h1>
+<p class="text-xl text-gray-600 leading-relaxed fade-in" style="animation-delay: 0.2s">
+Specialized in network security, malware analysis, and cloud security architecture. Building robust security solutions for the modern digital landscape.
+</p>
+<div class="flex gap-4 fade-in" style="animation-delay: 0.4s">
+<button class="bg-primary text-white px-8 py-4 !rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 whitespace-nowrap flex items-center gap-2">
+View Projects <i class="ri-arrow-right-line"></i>
+</button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-3xl opacity-30"></div>
+<img src="https://readdy.ai/api/search-image?query=modern%20cybersecurity%20command%20center%20with%20holographic%20displays%20showing%20network%20security%20monitoring%20advanced%20technology%20interface%20clean%20minimalist%20design%20professional&width=600&height=600&seq=hero1&orientation=squarish" 
+class="relative rounded-2xl shadow-2xl w-full object-cover transform hover:scale-[1.02] transition-transform duration-500" alt="Security Operations">
+</div>
+</div>
+</div>
+</section>
+<section id="projects" class="py-32 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col items-center mb-24 text-center">
+<span class="text-secondary font-medium mb-4">FEATURED WORK</span>
+<h2 class="text-5xl font-bold text-primary">Security Projects</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project1')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=cybersecurity%20network%20protection%20system%20with%20modern%20digital%20interface%20showing%20security%20shields%20firewall%20monitoring%20dashboard%20dark%20blue%20technology%20background%20professional%20clean%20design&width=400&height=300&seq=sec1&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">네트워크 보안 모니터링 시스템</h3>
+<p class="text-gray-600 mb-4">실시간 네트워크 트래픽 분석 및 침입 탐지 시스템을 구축하여 기업의 네트워크 보안을 강화했습니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Python</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Wireshark</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Snort</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project2')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=web%20application%20security%20vulnerability%20scanner%20interface%20showing%20code%20analysis%20penetration%20testing%20results%20with%20security%20assessment%20dashboard%20modern%20clean%20design%20dark%20theme%20professional&width=400&height=300&seq=sec2&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">웹 애플리케이션 취약점 스캐너</h3>
+<p class="text-gray-600 mb-4">자동화된 웹 애플리케이션 보안 테스트 도구를 개발하여 OWASP Top 10 취약점을 탐지합니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Burp Suite</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">OWASP ZAP</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project3')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=malware%20analysis%20laboratory%20with%20reverse%20engineering%20tools%20hex%20editors%20disassemblers%20virtual%20machines%20security%20research%20environment%20professional%20cybersecurity%20workspace%20clean%20modern%20design&width=400&height=300&seq=sec3&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">악성코드 분석 플랫폼</h3>
+<p class="text-gray-600 mb-4">샌드박스 환경에서 악성코드의 행동을 분석하고 시그니처를 생성하는 자동화 시스템을 구축했습니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">C++</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">IDA Pro</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Cuckoo</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project4')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=blockchain%20security%20audit%20smart%20contract%20analysis%20cryptocurrency%20wallet%20protection%20decentralized%20finance%20security%20tools%20professional%20cybersecurity%20interface%20modern%20clean%20design&width=400&height=300&seq=sec4&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">블록체인 보안 감사 도구</h3>
+<p class="text-gray-600 mb-4">스마트 컨트랙트의 보안 취약점을 자동으로 탐지하고 분석하는 도구를 개발했습니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Solidity</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Web3.js</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Mythril</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project5')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=incident%20response%20system%20cybersecurity%20emergency%20management%20digital%20forensics%20investigation%20tools%20security%20operations%20center%20SOC%20dashboard%20professional%20clean%20modern%20interface&width=400&height=300&seq=sec5&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">사이버 인시던트 대응 시스템</h3>
+<p class="text-gray-600 mb-4">보안 사고 발생 시 신속한 대응과 포렌식 분석을 위한 통합 관리 시스템을 구축했습니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Python</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Elasticsearch</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">MISP</span>
+</div>
+</div>
+</div>
+<div class="project-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer" onclick="showProjectDetail('project6')">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=cloud%20security%20architecture%20AWS%20Azure%20security%20configuration%20compliance%20monitoring%20multi-cloud%20security%20management%20dashboard%20professional%20cybersecurity%20interface%20modern%20clean%20design&width=400&height=300&seq=sec6&orientation=landscape')"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-3 text-primary">클라우드 보안 아키텍처</h3>
+<p class="text-gray-600 mb-4">멀티 클라우드 환경에서의 보안 정책 관리 및 컴플라이언스 모니터링 시스템을 설계했습니다.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">AWS</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">Terraform</span>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium">CloudTrail</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <header>
-    <div class="logo">logo</div>
-    <nav>
-      <a href="#">Projects</a>
-      <a href="#">About</a>
-    </nav>
-  </header>
-
-  <section class="intro">
-    <h1>Securing Digital Infrastructure</h1>
-    <p>Specialized in network security, malware analysis, and cloud security architecture. Building robust security solutions for the modern digital landscape.</p>
-    <p><a href="#projects">View Projects</a></p>
-  </section>
-
-  <section id="projects" class="projects">
-    <h2>FEATURED WORK</h2>
-
-    <div class="project">
-      <h3><a href="detail_network.html">네트워크 보안 모니터링 시스템</a></h3>
-      <p class="tech">Python · Wireshark · Snort</p>
-    </div>
-
-    <div class="project">
-      <h3><a href="detail_webapp.html">웹 애플리케이션 취약점 스캐너</a></h3>
-      <p class="tech">JavaScript · Burp Suite · OWASP ZAP</p>
-    </div>
-
-    <div class="project">
-      <h3><a href="detail_malware.html">악성코드 분석 플랫폼</a></h3>
-      <p class="tech">C++ · IDA Pro · Cuckoo</p>
-    </div>
-
-    <div class="project">
-      <h3><a href="detail_blockchain.html">블록체인 보안 감사 도구</a></h3>
-      <p class="tech">Solidity · Web3.js · Mythril</p>
-    </div>
-
-    <div class="project">
-      <h3><a href="detail_incident.html">사이버 인시던트 대응 시스템</a></h3>
-      <p class="tech">Python · Elasticsearch · MISP</p>
-    </div>
-
-    <div class="project">
-      <h3><a href="detail_cloud.html">클라우드 보안 아키텍처</a></h3>
-      <p class="tech">AWS · Terraform · CloudTrail</p>
-    </div>
-
-  </section>
-
-  <footer>
-    logo | 뒤로 가기
-  </footer>
-
-</body>
+</div>
+<div id="project1" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=cybersecurity%20network%20protection%20system%20with%20modern%20digital%20interface%20showing%20security%20shields%20firewall%20monitoring%20dashboard%20dark%20blue%20technology%20background%20professional%20clean%20design%20wide%20banner%20format&width=1200&height=400&seq=sec1-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">네트워크 보안 모니터링 시스템</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">시니어 보안 엔지니어</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2023.03 - 2023.12</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">5명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+대기업의 네트워크 인프라에 대한 실시간 보안 모니터링 시스템을 구축하는 프로젝트였습니다.
+기존의 수동적인 보안 관리 방식에서 벗어나 능동적이고 지능적인 위협 탐지 시스템을 도입하여
+보안 사고를 사전에 예방하고 신속한 대응이 가능하도록 했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Python</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Wireshark</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Snort</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">ELK Stack</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Splunk</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">실시간 트래픽 분석</h3>
+<p class="text-gray-600 leading-relaxed">
+네트워크 패킷을 실시간으로 캡처하고 분석하여 비정상적인 트래픽 패턴을 탐지합니다.
+머신러닝 알고리즘을 활용하여 정상 트래픽과 악성 트래픽을 구분하고,
+99.7%의 정확도로 위협을 탐지할 수 있었습니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">침입 탐지 시스템</h3>
+<p class="text-gray-600 leading-relaxed">
+Snort 기반의 IDS를 구축하여 알려진 공격 패턴과 시그니처를 탐지합니다.
+커스텀 룰을 개발하여 기업 환경에 특화된 위협을 탐지할 수 있도록 했으며,
+평균 탐지 시간을 기존 대비 85% 단축시켰습니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">통합 대시보드</h3>
+<p class="text-gray-600 leading-relaxed">
+ELK Stack을 활용하여 보안 이벤트를 시각화하고 실시간으로 모니터링할 수 있는
+통합 대시보드를 구축했습니다. 보안 담당자가 한눈에 네트워크 상태를 파악하고
+위협에 신속하게 대응할 수 있도록 직관적인 UI/UX를 제공했습니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project6')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project2')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="project2" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=web%20application%20security%20vulnerability%20scanner%20interface%20showing%20code%20analysis%20penetration%20testing%20results%20with%20security%20assessment%20dashboard%20modern%20clean%20design%20dark%20theme%20professional%20wide%20banner&width=1200&height=400&seq=sec2-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">웹 애플리케이션 취약점 스캐너</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">리드 개발자</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2023.06 - 2024.02</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">3명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+웹 애플리케이션의 보안 취약점을 자동으로 탐지하고 분석하는 도구를 개발했습니다.
+OWASP Top 10 취약점을 중심으로 SQL Injection, XSS, CSRF 등 다양한 웹 보안 위협을
+효율적으로 탐지할 수 있는 스캐너를 구축하여 개발팀의 보안 테스트 업무를 자동화했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">JavaScript</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Node.js</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Burp Suite</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">OWASP ZAP</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Selenium</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">자동화된 취약점 스캔</h3>
+<p class="text-gray-600 leading-relaxed">
+웹 크롤링 기술을 활용하여 웹 애플리케이션의 모든 페이지와 폼을 자동으로 탐색하고,
+각종 취약점 테스트를 수행합니다. 기존 수동 테스트 대비 90% 이상의 시간을 절약하며,
+놓치기 쉬운 취약점까지 체계적으로 탐지할 수 있습니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">상세한 보고서 생성</h3>
+<p class="text-gray-600 leading-relaxed">
+발견된 취약점에 대한 상세한 분석 보고서를 자동으로 생성합니다.
+취약점의 위험도, 영향 범위, 수정 방안을 포함한 종합적인 보고서를 제공하여
+개발팀이 효율적으로 보안 이슈를 해결할 수 있도록 지원합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">CI/CD 통합</h3>
+<p class="text-gray-600 leading-relaxed">
+개발 파이프라인에 보안 스캔을 통합하여 코드 배포 전 자동으로 보안 검사를 수행합니다.
+Jenkins, GitLab CI 등과 연동하여 지속적인 보안 모니터링이 가능하며,
+보안 이슈 발견 시 즉시 알림을 제공합니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project1')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project3')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="project3" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=malware%20analysis%20laboratory%20with%20reverse%20engineering%20tools%20hex%20editors%20disassemblers%20virtual%20machines%20security%20research%20environment%20professional%20cybersecurity%20workspace%20clean%20modern%20design%20wide%20banner&width=1200&height=400&seq=sec3-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">악성코드 분석 플랫폼</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">악성코드 분석가</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2022.09 - 2023.05</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">4명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+샌드박스 환경에서 악성코드의 행동을 자동으로 분석하고 시그니처를 생성하는 플랫폼을 구축했습니다.
+정적 분석과 동적 분석을 결합하여 알려지지 않은 악성코드까지 탐지할 수 있는
+차세대 악성코드 분석 시스템을 개발했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">C++</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Python</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">IDA Pro</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Cuckoo Sandbox</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">YARA</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">자동화된 행동 분석</h3>
+<p class="text-gray-600 leading-relaxed">
+가상 머신 환경에서 악성코드를 실행하여 파일 시스템 변경, 네트워크 통신,
+레지스트리 수정 등의 행동을 자동으로 모니터링합니다.
+머신러닝 알고리즘을 적용하여 악성 행동 패턴을 학습하고 분류합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">시그니처 자동 생성</h3>
+<p class="text-gray-600 leading-relaxed">
+분석 결과를 바탕으로 YARA 룰과 Snort 시그니처를 자동으로 생성합니다.
+생성된 시그니처는 기존 보안 솔루션에 즉시 적용 가능하며,
+새로운 악성코드 변종에 대한 신속한 대응이 가능합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">위협 인텔리전스 연동</h3>
+<p class="text-gray-600 leading-relaxed">
+글로벌 위협 인텔리전스 피드와 연동하여 최신 악성코드 정보를 실시간으로 수집하고
+분석 결과를 공유합니다. IOC(Indicators of Compromise) 데이터베이스를 구축하여
+조직 전체의 보안 대응 능력을 향상시켰습니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project2')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project4')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="project4" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=blockchain%20security%20audit%20smart%20contract%20analysis%20cryptocurrency%20wallet%20protection%20decentralized%20finance%20security%20tools%20professional%20cybersecurity%20interface%20modern%20clean%20design%20wide%20banner&width=1200&height=400&seq=sec4-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">블록체인 보안 감사 도구</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">블록체인 보안 전문가</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2024.01 - 2024.08</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">6명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+스마트 컨트랙트의 보안 취약점을 자동으로 탐지하고 분석하는 도구를 개발했습니다.
+DeFi 프로젝트의 급증과 함께 스마트 컨트랙트 보안의 중요성이 커지면서,
+정적 분석과 형식 검증을 통해 코드 레벨에서 보안 이슈를 사전에 발견할 수 있는
+전문적인 감사 도구를 구축했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Solidity</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Web3.js</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Mythril</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Slither</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Hardhat</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">스마트 컨트랙트 정적 분석</h3>
+<p class="text-gray-600 leading-relaxed">
+Solidity 코드를 분석하여 재진입 공격, 정수 오버플로우, 접근 제어 취약점 등
+일반적인 스마트 컨트랙트 취약점을 자동으로 탐지합니다.
+커스텀 룰 엔진을 개발하여 프로젝트별 특화된 보안 검사가 가능합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">가스 최적화 분석</h3>
+<p class="text-gray-600 leading-relaxed">
+스마트 컨트랙트의 가스 사용량을 분석하여 최적화 방안을 제시합니다.
+불필요한 연산과 저장소 사용을 식별하여 트랜잭션 비용을 최대 40% 절감할 수 있는
+개선 방안을 제공합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">테스트넷 시뮬레이션</h3>
+<p class="text-gray-600 leading-relaxed">
+테스트넷 환경에서 다양한 공격 시나리오를 시뮬레이션하여 실제 공격에 대한
+컨트랙트의 견고성을 검증합니다. 플래시 론 공격, MEV 공격 등
+최신 DeFi 공격 기법에 대한 방어 능력을 평가합니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project3')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project5')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="project5" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=incident%20response%20system%20cybersecurity%20emergency%20management%20digital%20forensics%20investigation%20tools%20security%20operations%20center%20SOC%20dashboard%20professional%20clean%20modern%20interface%20wide%20banner&width=1200&height=400&seq=sec5-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">사이버 인시던트 대응 시스템</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">인시던트 대응 팀장</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2022.01 - 2022.11</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">8명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+보안 사고 발생 시 신속하고 체계적인 대응을 위한 통합 인시던트 대응 시스템을 구축했습니다.
+사고 탐지부터 복구까지의 전 과정을 자동화하고, 디지털 포렌식 분석 기능을 통합하여
+보안 사고에 대한 종합적인 대응 능력을 확보했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Python</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Elasticsearch</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">MISP</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">TheHive</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Volatility</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">자동화된 사고 대응</h3>
+<p class="text-gray-600 leading-relaxed">
+보안 이벤트 발생 시 사전 정의된 플레이북에 따라 자동으로 초기 대응을 수행합니다.
+감염된 시스템 격리, 관련 계정 비활성화, 증거 수집 등의 작업을 자동화하여
+평균 대응 시간을 기존 대비 70% 단축시켰습니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">통합 포렌식 분석</h3>
+<p class="text-gray-600 leading-relaxed">
+메모리 덤프, 디스크 이미지, 네트워크 패킷 등 다양한 디지털 증거를 통합 분석하는
+플랫폼을 구축했습니다. Volatility, Autopsy 등의 도구를 연동하여
+자동화된 포렌식 분석이 가능하며, 분석 결과를 시각화하여 제공합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">위협 인텔리전스 활용</h3>
+<p class="text-gray-600 leading-relaxed">
+MISP를 활용하여 글로벌 위협 인텔리전스를 수집하고 분석합니다.
+IOC 매칭을 통해 알려진 위협과의 연관성을 파악하고,
+공격자의 TTP(Tactics, Techniques, Procedures)를 분석하여
+향후 공격을 예방할 수 있는 인사이트를 제공합니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project4')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project6')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div id="project6" class="detail-page">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="w-full px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="font-['Pacifico'] text-2xl text-primary cursor-pointer" onclick="showMainPage()">logo</div>
+<button onclick="showMainPage()" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+<i class="ri-arrow-left-line mr-2"></i>뒤로 가기
+</button>
+</div>
+</nav>
+</header>
+<div class="h-80 bg-cover bg-center relative" style="background-image: url('https://readdy.ai/api/search-image?query=cloud%20security%20architecture%20AWS%20Azure%20security%20configuration%20compliance%20monitoring%20multi-cloud%20security%20management%20dashboard%20professional%20cybersecurity%20interface%20modern%20clean%20design%20wide%20banner&width=1200&height=400&seq=sec6-hero&orientation=landscape')">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<h1 class="text-5xl font-bold text-white text-center">클라우드 보안 아키텍처</h1>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">역할</h3>
+<p class="text-gray-600">클라우드 보안 아키텍트</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">기간</h3>
+<p class="text-gray-600">2024.03 - 진행중</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg">
+<h3 class="font-bold text-primary mb-2">팀 규모</h3>
+<p class="text-gray-600">7명</p>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">프로젝트 개요</h2>
+<p class="text-gray-600 leading-relaxed mb-6">
+멀티 클라우드 환경에서의 통합 보안 관리 시스템을 설계하고 구축했습니다.
+AWS, Azure, GCP 등 다양한 클라우드 플랫폼에 분산된 리소스의 보안 정책을
+중앙에서 관리하고, 컴플라이언스 요구사항을 자동으로 모니터링하는
+차세대 클라우드 보안 아키텍처를 구현했습니다.
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">AWS</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Azure</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Terraform</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">CloudTrail</span>
+<span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full font-medium">Kubernetes</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+<h2 class="text-2xl font-bold text-primary mb-6">주요 기능 및 성과</h2>
+<div class="space-y-6">
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">통합 보안 정책 관리</h3>
+<p class="text-gray-600 leading-relaxed">
+Infrastructure as Code(IaC) 방식으로 멀티 클라우드 환경의 보안 정책을
+중앙에서 관리합니다. Terraform을 활용하여 일관된 보안 설정을 자동 배포하고,
+정책 위반 시 즉시 알림과 자동 수정 기능을 제공합니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">실시간 컴플라이언스 모니터링</h3>
+<p class="text-gray-600 leading-relaxed">
+GDPR, HIPAA, SOC 2 등 다양한 컴플라이언스 요구사항을 실시간으로 모니터링합니다.
+자동화된 감사 리포트 생성과 위험도 평가를 통해 규정 준수 상태를
+지속적으로 관리하며, 컴플라이언스 위반 위험을 95% 감소시켰습니다.
+</p>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-primary mb-3">Zero Trust 아키텍처</h3>
+<p class="text-gray-600 leading-relaxed">
+모든 네트워크 트래픽을 기본적으로 신뢰하지 않는 Zero Trust 보안 모델을 구현했습니다.
+마이크로 세그멘테이션, 다단계 인증, 지속적인 검증을 통해
+내부 위협과 외부 공격 모두에 대한 강력한 방어 체계를 구축했습니다.
+</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<button onclick="showProjectDetail('project5')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+<i class="ri-arrow-left-line mr-2"></i>이전 프로젝트
+</button>
+<button onclick="showProjectDetail('project1')" class="flex items-center text-secondary hover:text-secondary/80 transition-colors duration-200">
+다음 프로젝트<i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<script id="navigation">
+function showProjectDetail(projectId) {
+document.getElementById('main-page').style.display = 'none';
+document.querySelectorAll('.detail-page').forEach(page => {
+page.classList.remove('active');
+page.style.display = 'none';
+});
+document.getElementById(projectId).style.display = 'block';
+document.getElementById(projectId).classList.add('active');
+window.scrollTo(0, 0);
+}
+function showMainPage() {
+document.getElementById('main-page').style.display = 'block';
+document.querySelectorAll('.detail-page').forEach(page => {
+page.classList.remove('active');
+page.style.display = 'none';
+});
+window.scrollTo(0, 0);
+}
+</script>
+<script id="animations">
+document.addEventListener('DOMContentLoaded', function() {
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.animationDelay = '0s';
+entry.target.classList.add('fade-in');
+}
+});
+}, observerOptions);
+document.querySelectorAll('.project-card').forEach(card => {
+observer.observe(card);
+});
+});
+</script>
+<script id="smooth-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+});
+</script>
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_t9tkQZJiyi2ps9zUYm8TDsL6qXo4YmZx0Ot5rBlAlEd', {
+        api_host: 'https://us.i.posthog.com',
+        autocapture: false,
+        capture_pageview: false,
+        capture_pageleave: false,
+        capture_performance: {
+            web_vitals: false,
+        },
+        rageclick: false,
+    })
+    window.shareKey = '-BlkpySRtEFcSAnEc6c_hw';
+    window.host = 'readdy.ai';
+</script>
+<script src="https://static.readdy.ai/static/share.js"></script></body>
 </html>
