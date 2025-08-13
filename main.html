@@ -25,7 +25,7 @@
   </div>
 
   <!-- 갤러리 -->
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+  <div class="grid grid-cols-6 md:grid-cols-6 gap-4 mb-6">
     <div>
       <img src="images/2.PNG" class="w-full rounded cursor-pointer" onclick="openModal(this)">
       <p class="text-gray-600 text-sm mt-1">특정 HTTP 탐지</p>
@@ -86,7 +86,7 @@
 <script>
 function openModal(img){
   document.getElementById('modalImage').src = img.src;
-  document.getElementById('modalCaption').textContent = img.nextElementSibling ? img.nextElementSibling.textContent : '';
+  document.getElementById('modalCaption').textContent = '';
   document.getElementById('imageModal').classList.remove('hidden');
 }
 function closeModal(){
@@ -96,3 +96,4 @@ function closeModal(){
 
 </body>
 </html>
+
