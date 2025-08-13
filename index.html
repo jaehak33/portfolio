@@ -47,7 +47,7 @@
 <section id="projects" class="max-w-7xl mx-auto px-6 py-24">
   <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    
+
     <!-- 프로젝트 카드 1 -->
     <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project1')">
       <img src="https://via.placeholder.com/400x250" alt="Project1" class="w-full h-48 object-cover">
@@ -75,34 +75,79 @@
       </div>
     </div>
 
-    <!-- 필요시 프로젝트 카드 4~6 추가 -->
+    <!-- 프로젝트 카드 4 -->
+    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project4')">
+      <img src="https://via.placeholder.com/400x250" alt="Project4" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-2">Project Four</h3>
+        <p class="text-gray-600">Web application penetration testing and reporting.</p>
+      </div>
+    </div>
+
+    <!-- 프로젝트 카드 5 -->
+    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project5')">
+      <img src="https://via.placeholder.com/400x250" alt="Project5" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-2">Project Five</h3>
+        <p class="text-gray-600">SIEM integration and alert automation setup.</p>
+      </div>
+    </div>
+
+    <!-- 프로젝트 카드 6 -->
+    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project6')">
+      <img src="https://via.placeholder.com/400x250" alt="Project6" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-2">Project Six</h3>
+        <p class="text-gray-600">Cloud IAM policy management and security audit.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 </div> <!-- /main-page -->
 
-<!-- 상세 페이지 1 -->
+<!-- 상세 페이지들 -->
 <div id="project1" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
   <h2 class="text-3xl font-bold mb-4">Project One</h2>
   <img src="https://via.placeholder.com/800x400" alt="Project1" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Detailed explanation about Project One. Network security monitoring system development...</p>
+  <p class="text-gray-700 mb-4">Network security monitoring system development. Implemented intrusion detection, traffic monitoring, and alerting features for enterprise networks.</p>
 </div>
 
-<!-- 상세 페이지 2 -->
 <div id="project2" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
   <h2 class="text-3xl font-bold mb-4">Project Two</h2>
   <img src="https://via.placeholder.com/800x400" alt="Project2" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Detailed explanation about Project Two. Malware analysis automation using Python...</p>
+  <p class="text-gray-700 mb-4">Malware analysis automation using Python. Automated unpacking, sandbox execution, and behavior logging to improve malware investigation efficiency.</p>
 </div>
 
-<!-- 상세 페이지 3 -->
 <div id="project3" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
   <h2 class="text-3xl font-bold mb-4">Project Three</h2>
   <img src="https://via.placeholder.com/800x400" alt="Project3" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Detailed explanation about Project Three. Cloud security architecture design and implementation...</p>
+  <p class="text-gray-700 mb-4">Cloud security architecture design and implementation. Designed multi-account architecture with proper network segmentation, IAM policies, and security controls.</p>
+</div>
+
+<div id="project4" class="detail-page max-w-5xl mx-auto px-6 py-24">
+  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <h2 class="text-3xl font-bold mb-4">Project Four</h2>
+  <img src="https://via.placeholder.com/800x400" alt="Project4" class="w-full rounded-xl mb-6">
+  <p class="text-gray-700 mb-4">Web application penetration testing and reporting. Conducted full security assessment including XSS, SQLi, and authentication bypass scenarios, and delivered detailed reports.</p>
+</div>
+
+<div id="project5" class="detail-page max-w-5xl mx-auto px-6 py-24">
+  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <h2 class="text-3xl font-bold mb-4">Project Five</h2>
+  <img src="https://via.placeholder.com/800x400" alt="Project5" class="w-full rounded-xl mb-6">
+  <p class="text-gray-700 mb-4">SIEM integration and alert automation setup. Configured multiple log sources, correlation rules, and automated incident notifications for faster detection.</p>
+</div>
+
+<div id="project6" class="detail-page max-w-5xl mx-auto px-6 py-24">
+  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
+  <h2 class="text-3xl font-bold mb-4">Project Six</h2>
+  <img src="https://via.placeholder.com/800x400" alt="Project6" class="w-full rounded-xl mb-6">
+  <p class="text-gray-700 mb-4">Cloud IAM policy management and security audit. Audited permissions, enforced least privilege, and implemented automated compliance checks across accounts.</p>
 </div>
 
 <script>
