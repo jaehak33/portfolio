@@ -1,170 +1,109 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>정보보안 포트폴리오</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .fade-in { opacity:0; transform:translateY(20px); animation:fadeIn 0.8s forwards; }
-  @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
-  .project-card { transition: all 0.5s; }
-  .project-card:hover { transform:translateY(-8px); box-shadow:0 25px 50px -12px rgba(0,0,0,0.15); }
-  .detail-page { display:none; }
-  .detail-page.active { display:block; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>정보보안 일대기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #1e1e1e; color: #f5f5f5; line-height: 1.6; padding: 40px 20px; }
+    header { text-align: center; margin-bottom: 60px; }
+    header h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+    header p { font-size: 1.2rem; font-weight: 300; color: #bbb; }
+    .section-title { font-size: 1.8rem; font-weight: 500; margin-bottom: 20px; border-left: 4px solid #f5f5f5; padding-left: 12px; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+    .project-card { width: 500px; border-radius: 12px; background-color: #2a2a2a; box-shadow: 0 4px 10px rgba(0,0,0,0.4); overflow: hidden; transition: transform 0.3s ease; display: flex; flex-direction: column; position: relative; }
+    .project-card:hover { transform: translateY(-6px); }
+    .project-image { width: 100%; height: 400px; object-fit: contain; background-color: #1e1e1e; padding: 5px; }
+    .project-content { padding: 12px; flex: 1; }
+    .project-content h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; color: #fff; }
+    .project-content p { font-size: 0.95rem; color: #ccc; margin-bottom: 10px; }
+    .project-links { position: absolute; bottom: 12px; right: 12px; }
+    .project-links a { display: inline-block; font-size: 0.9rem; font-weight: 500; color: #f5f5f5; padding: 8px 16px; border: 1px solid #f5f5f5; border-radius: 24px; text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease; }
+    .project-links a:hover { background-color: #f5f5f5; color: #1e1e1e; }
+    @media (max-width: 600px) { header h1 { font-size: 2rem; } .project-content p { font-size: 0.9rem; } }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
+  <header>
+    <h1>정재학</h1>
+    <p>화이트 해커를 꿈꾸는</p>
+  </header>
 
-<!-- 메인 페이지 -->
-<div id="main-page">
+  <main>
+    <section>
+      <h2 class="section-title">일대기 작품</h2>
+      <div class="projects">
 
-<header class="bg-white shadow sticky top-0 z-50">
-  <nav class="w-full px-6 py-4 flex justify-between items-center">
-    <div class="font-['Pacifico'] text-2xl text-primary">MyPortfolio</div>
-    <div class="flex space-x-6">
-      <a href="#projects" class="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
-      <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-    </div>
-  </nav>
-</header>
+        <article class="project-card">
+          <img src="images/1.png" alt="네트워크보안" class="project-image" />
+          <div class="project-content">
+            <h3>네트워크보안</h3>
+            <p>여러 솔루션을 사용해 탐지 및 방화벽 구축</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
 
-<!-- 히어로 섹션 -->
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
-  <div class="text-center">
-    <h1 class="text-5xl font-bold mb-4">Securing Digital <span class="text-indigo-600">Infrastructure</span></h1>
-    <p class="text-xl text-gray-700 mb-6">Specialized in network security, malware analysis, and cloud security architecture.</p>
-    <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"
-            class="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-500 transition">View Projects</button>
-  </div>
-</section>
+        <article class="project-card">
+          <img src="images/2.png" alt="시스템보안" class="project-image" />
+          <div class="project-content">
+            <h3>시스템보안</h3>
+            <p>시스템보안 내용</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
 
-<!-- 프로젝트 섹션 -->
-<section id="projects" class="max-w-7xl mx-auto px-6 py-24">
-  <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="project-card">
+          <img src="images/3.png" alt="모의해킹" class="project-image" />
+          <div class="project-content">
+            <h3>모의해킹</h3>
+            <p>모의해킹 내용</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
 
-    <!-- 프로젝트 카드 1 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project1')">
-      <img src="https://via.placeholder.com/400x250" alt="Project1" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project One</h3>
-        <p class="text-gray-600">Network security monitoring system development.</p>
+        <article class="project-card">
+          <img src="images/4.png" alt="웹보안" class="project-image" />
+          <div class="project-content">
+            <h3>웹보안</h3>
+            <p>웹 보안 내용</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/5.png" alt="악성코드 분석" class="project-image" />
+          <div class="project-content">
+            <h3>악성코드 분석</h3>
+            <p>악성코드 분석 내용</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img src="images/6.png" alt="보안 연구" class="project-image" />
+          <div class="project-content">
+            <h3>보안 연구</h3>
+            <p>보안 연구 내용</p>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jaehak33/portfolio" target="_blank">GitHub</a>
+          </div>
+        </article>
+
       </div>
-    </div>
-
-    <!-- 프로젝트 카드 2 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project2')">
-      <img src="https://via.placeholder.com/400x250" alt="Project2" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Two</h3>
-        <p class="text-gray-600">Malware analysis automation using Python.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 3 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project3')">
-      <img src="https://via.placeholder.com/400x250" alt="Project3" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Three</h3>
-        <p class="text-gray-600">Cloud security architecture design and implementation.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 4 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project4')">
-      <img src="https://via.placeholder.com/400x250" alt="Project4" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Four</h3>
-        <p class="text-gray-600">Web application penetration testing and reporting.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 5 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project5')">
-      <img src="https://via.placeholder.com/400x250" alt="Project5" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Five</h3>
-        <p class="text-gray-600">SIEM integration and alert automation setup.</p>
-      </div>
-    </div>
-
-    <!-- 프로젝트 카드 6 -->
-    <div class="project-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="showProjectDetail('project6')">
-      <img src="https://via.placeholder.com/400x250" alt="Project6" class="w-full h-48 object-cover">
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project Six</h3>
-        <p class="text-gray-600">Cloud IAM policy management and security audit.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-</div> <!-- /main-page -->
-
-<!-- 상세 페이지들 -->
-<div id="project1" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project One</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project1" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Network security monitoring system development. Implemented intrusion detection, traffic monitoring, and alerting features for enterprise networks.</p>
-</div>
-
-<div id="project2" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project Two</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project2" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Malware analysis automation using Python. Automated unpacking, sandbox execution, and behavior logging to improve malware investigation efficiency.</p>
-</div>
-
-<div id="project3" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project Three</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project3" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Cloud security architecture design and implementation. Designed multi-account architecture with proper network segmentation, IAM policies, and security controls.</p>
-</div>
-
-<div id="project4" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project Four</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project4" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Web application penetration testing and reporting. Conducted full security assessment including XSS, SQLi, and authentication bypass scenarios, and delivered detailed reports.</p>
-</div>
-
-<div id="project5" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project Five</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project5" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">SIEM integration and alert automation setup. Configured multiple log sources, correlation rules, and automated incident notifications for faster detection.</p>
-</div>
-
-<div id="project6" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" class="mb-6 text-indigo-600 hover:underline">&larr; Back</button>
-  <h2 class="text-3xl font-bold mb-4">Project Six</h2>
-  <img src="https://via.placeholder.com/800x400" alt="Project6" class="w-full rounded-xl mb-6">
-  <p class="text-gray-700 mb-4">Cloud IAM policy management and security audit. Audited permissions, enforced least privilege, and implemented automated compliance checks across accounts.</p>
-</div>
-
-<script>
-function showProjectDetail(projectId){
-  document.getElementById('main-page').style.display='none';
-  document.querySelectorAll('.detail-page').forEach(p=>p.classList.remove('active'));
-  const target = document.getElementById(projectId);
-  target.style.display='block';
-  target.classList.add('active');
-  window.scrollTo(0,0);
-}
-function showMainPage(){
-  document.getElementById('main-page').style.display='block';
-  document.querySelectorAll('.detail-page').forEach(p=>{p.style.display='none'; p.classList.remove('active');});
-  window.scrollTo(0,0);
-}
-</script>
-
+    </section>
+  </main>
 </body>
 </html>
