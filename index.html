@@ -16,27 +16,6 @@
   .project-card:hover { transform:translateY(-8px); box-shadow:0 25px 50px -12px rgba(0,0,0,0.15); }
   .detail-page { display:none; }
   .detail-page.active { display:block; }
-  
-  .github-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.github-button:hover {
-  background-color: #fff;
-  color: #333;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -68,11 +47,53 @@
   <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+    <!-- Project Cards -->
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project1')">
+      <img src="images/1_main.png" alt="Project1" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project One</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project2')">
+      <img src="images/2_main.png" alt="Project2" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project Two</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project3')">
+      <img src="images/3_main.png" alt="Project3" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project Three</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project4')">
+      <img src="images/4_main.png" alt="Project4" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project Four</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project5')">
+      <img src="images/5_main.png" alt="Project5" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project Five</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+    <div class="project-card bg-white rounded-xl shadow p-6 cursor-pointer" onclick="showProjectDetail('project6')">
+      <img src="images/6_main.png" alt="Project6" class="rounded-lg mb-4">
+      <h3 class="text-xl font-bold mb-2">Project Six</h3>
+      <p class="text-gray-600">대표 이미지 설명</p>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- 상세페이지 섹션 -->
+<!-- Project 1 ~ 6 Detail Pages -->
 <div id="project1" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" 
           class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project One</h2>
   <div class="mb-6">
@@ -80,154 +101,94 @@
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/1_1.png" alt="Project1-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/1_2.png" alt="Project1-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/1_3.png" alt="Project1-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/1_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/1_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/1_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
-<!-- Project 2 -->
+<!-- Project 2 ~ 6 동일한 구조 반복 -->
 <div id="project2" class="detail-page max-w-5xl mx-auto px-6 py-24">
-  <button onclick="showMainPage()" 
-          class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+  <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project Two</h2>
   <div class="mb-6">
-    <img src="images/2_main.png" alt="Project2 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <img src="images/2_main.png" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/2_1.png" alt="Project2-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/2_2.png" alt="Project2-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/2_3.png" alt="Project2-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/2_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/2_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/2_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
 <!-- Project 3 -->
 <div id="project3" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project Three</h2>
   <div class="mb-6">
-    <img src="images/3_main.png" alt="Project3 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <img src="images/3_main.png" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/3_1.png" alt="Project3-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/3_2.png" alt="Project3-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/3_3.png" alt="Project3-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/3_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/3_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/3_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
 <!-- Project 4 -->
 <div id="project4" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project Four</h2>
   <div class="mb-6">
-    <img src="images/4_main.png" alt="Project4 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <img src="images/4_main.png" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/4_1.png" alt="Project4-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/4_2.png" alt="Project4-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/4_3.png" alt="Project4-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/4_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/4_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/4_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
 <!-- Project 5 -->
 <div id="project5" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project Five</h2>
   <div class="mb-6">
-    <img src="images/5_main.png" alt="Project5 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <img src="images/5_main.png" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/5_1.png" alt="Project5-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/5_2.png" alt="Project5-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/5_3.png" alt="Project5-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/5_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/5_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/5_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
 <!-- Project 6 -->
 <div id="project6" class="detail-page max-w-5xl mx-auto px-6 py-24">
   <button onclick="showMainPage()" class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+    <i class="ri-arrow-left-line"></i> Back
   </button>
   <h2 class="text-3xl font-bold mb-4">Project Six</h2>
   <div class="mb-6">
-    <img src="images/6_main.png" alt="Project6 Main" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <img src="images/6_main.png" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">대표 이미지 설명</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <div>
-      <img src="images/6_1.png" alt="Project6-1" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
-    </div>
-    <div>
-      <img src="images/6_2.png" alt="Project6-2" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
-    </div>
-    <div>
-      <img src="images/6_3.png" alt="Project6-3" class="w-full rounded cursor-pointer" onclick="openModal(this)">
-      <p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
-    </div>
+    <img src="images/6_1.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 1 설명</p>
+    <img src="images/6_2.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 2 설명</p>
+    <img src="images/6_3.png" class="w-full rounded cursor-pointer" onclick="openModal(this)"><p class="text-gray-600 text-sm mt-1">작은 이미지 3 설명</p>
   </div>
 </div>
 
@@ -269,7 +230,6 @@ function closeModal(){
   <i class="ri-github-fill text-lg"></i>
   <span>GitHub</span>
 </a>
+
 </body>
 </html>
-
-
