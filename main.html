@@ -105,4 +105,24 @@
   function openModal(img) {
     document.getElementById('modalImage').src = img.src;
     document.getElementById('modalCaption').textContent = img.alt || '';
-    document.getElementById('imageModal').class
+    document.getElementById('imageModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').classList.add('hidden');
+  }
+
+  // ESC 키 누르면 모달 닫기
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // 모달 바깥 클릭 시 닫기 (선택 사항)
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {  // 모달 백그라운드 클릭했을 때만 닫힘
+      closeModal();
+    }
+  });
+</script>
