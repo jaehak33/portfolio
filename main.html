@@ -18,63 +18,47 @@
 
   <h2 class="text-3xl font-bold mb-6">Project One</h2>
 
-  <!-- 메인 이미지 -->
   <div class="mb-6">
     <img src="images/1.png" alt="전체 네트워크 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
     <p class="text-gray-700 mt-2">전체 네트워크 토폴로지</p>
   </div>
 
-  <!-- 갤러리 -->
   <div class="grid grid-cols-6 md:grid-cols-6 gap-4 mb-6">
-     <div class="flex flex-col h-[220px] border p-2 rounded">
+     <div class="flex flex-col h-[280px] p-2 rounded">
     <div class="flex-1 flex items-center justify-center overflow-hidden">
       <img src="images/2.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 HTTP 탐지">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">특정 HTTP 탐지</p>
   </div>
 
-  <!-- 카드 2 -->
-  <div class="flex flex-col h-[220px] border p-2 rounded">
+  <div class="flex flex-col h-[280px] p-2 rounded">
     <div class="flex-1 flex items-center justify-center overflow-hidden">
       <img src="images/3.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 ICMP 탐지">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">특정 ICMP 탐지</p>
   </div>
 
-  <!-- 카드 3 -->
-  <div class="flex flex-col h-[220px] border p-2 rounded">
+  <div class="flex flex-col h-[280px] p-2 rounded">
     <div class="flex-1 flex items-center justify-center overflow-hidden">
       <img src="images/4.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Rand-source DDoS 탐지">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">Rand-source DDoS 탐지</p>
   </div>
 
-  <!-- 카드 4 -->
-  <div class="flex flex-col h-[220px] border p-2 rounded">
+  <div class="flex flex-col h-[280px] p-2 rounded">
     <div class="flex-1 flex items-center justify-center overflow-hidden">
       <img src="images/5.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Injection 공격 탐지">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">특정 구문 Injection 공격 탐지</p>
   </div>
 
-  <!-- 카드 5 -->
-  <div class="flex flex-col h-[220px] border p-2 rounded">
+  <div class="flex flex-col h-[280px] p-2 rounded">
     <div class="flex-1 flex items-center justify-center overflow-hidden">
       <img src="images/6.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="SYN Flag Scanning 탐지">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">SYN Flag Scanning 탐지</p>
   </div>
 
-  <!-- 카드 6 -->
-  <div class="flex flex-col h-[220px] border p-2 rounded">
-    <div class="flex-1 flex items-center justify-center overflow-hidden">
-      <img src="images/7.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="추가 탐지 항목">
-    </div>
-    <p class="text-gray-600 text-sm text-center mt-2">추가 탐지 항목</p>
-  </div>
-</div>
-
-  <!-- 설명 -->
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">설명</h2>
     <p class="text-gray-700">
@@ -86,7 +70,6 @@
     </p>
   </section>
 
-  <!-- 사용 기술 -->
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
     <ul class="flex flex-wrap gap-2">
@@ -102,7 +85,6 @@
   </section>
 </div>
 
-<!-- 모달 -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
   <span class="absolute top-4 right-4 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
   <img id="modalImage" src="" alt="확대 이미지" class="max-h-full max-w-full rounded-lg shadow-lg">
@@ -122,6 +104,7 @@ function closeModal(){
 
 </body>
 </html>
+
 
 
 
