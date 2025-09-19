@@ -63,7 +63,6 @@
       </div>
       <p class="text-gray-600 text-sm text-center mt-2">set uid 설정 후 권한상승</p>
     </div>
-  </div> 
 
    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
      <div class="flex-1 flex items-center justify-center overflow-hidden">
@@ -71,7 +70,7 @@
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">BOF 실행</p>
   </div>
-</div>
+ </div>
 
   <!-- 설명 -->
   <section class="mb-6">
@@ -85,6 +84,7 @@
     </p>
   </section>
 
+  
   <!-- 사용 기술 -->
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
@@ -93,13 +93,63 @@
       <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
       <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
       <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
+    </ul>
+  </section>
+
+<h2 class="text-3xl font-bold mb-6">DB 구축</h2>
+  
+<!-- Top Image -->
+  <div class="mb-6">
+    <img src="N,S/db.PNG" alt="전체 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">전체 구성</p>
+  </div>
+
+<!-- 이미지 카드 그리드 -->
+  <div class="grid grid-cols-5 md:grid-cols-5 gap-4 mb-6">
+    <!-- 카드 반복 -->
+    <div class="flex flex-col h-[280px] p-2 rounded">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/dev.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Developers Table 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">Developers Table 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/skill.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Skillscodes Table 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">Skillscodes Table 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/DB.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 데이터 조회">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2"특정 데이터 조회</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/user.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="유저 권한 확인">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">유저 권한 확인</p>
+    </div>
+</div>
+
+  <!-- 사용 기술 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
+    <ul class="flex flex-wrap gap-2">
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ubuntu</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
     </ul>
   </section>
 </div>
+
+
+
 
 <!-- 이미지 모달 -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
@@ -133,4 +183,3 @@
   });
 </script>
 <div>
-
