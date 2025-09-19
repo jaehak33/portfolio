@@ -18,12 +18,12 @@
     <span>Back</span>
   </button>
 
-  <h2 class="text-3xl font-bold mb-6">네트워크 보안</h2>
+  <h2 class="text-3xl font-bold mb-6">네트워크 , 시스템 보안</h2>
 
   <!-- Top Image -->
   <div class="mb-6">
-    <img src="images/1.png" alt="전체 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
-    <p class="text-gray-700 mt-2">전체 네트워크 토폴로지</p>
+    <img src="N,S/all.PNG" alt="전체 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">전체 토폴로지</p>
   </div>
 
   <!-- 이미지 카드 그리드 -->
@@ -31,39 +31,47 @@
     <!-- 카드 반복 -->
     <div class="flex flex-col h-[280px] p-2 rounded">
       <div class="flex-1 flex items-center justify-center overflow-hidden">
-        <img src="images/2.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 HTTP 탐지">
+        <img src="N,S/ND.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="sticky bit 설정">
       </div>
-      <p class="text-gray-600 text-sm text-center mt-2">특정 HTTP 탐지</p>
+      <p class="text-gray-600 text-sm text-center mt-2">sticky bit 설정</p>
     </div>
 
     <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
       <div class="flex-1 flex items-center justify-center overflow-hidden">
-        <img src="images/3.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="특정 ICMP 탐지">
+        <img src="N,S/Plen.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Password 설정">
       </div>
-      <p class="text-gray-600 text-sm text-center mt-2">특정 ICMP 탐지</p>
+      <p class="text-gray-600 text-sm text-center mt-2"></p>
     </div>
 
     <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
       <div class="flex-1 flex items-center justify-center overflow-hidden">
-        <img src="images/4.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Rand-source DDoS 탐지">
+        <img src="N,S/pass.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="password 만료 기간 설정">
       </div>
-      <p class="text-gray-600 text-sm text-center mt-2">Rand-source DDoS 탐지</p>
+      <p class="text-gray-600 text-sm text-center mt-2">password 만료 기간 설정</p>
     </div>
 
     <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
       <div class="flex-1 flex items-center justify-center overflow-hidden">
-        <img src="images/5.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Injection 공격 탐지">
+        <img src="N,S/wtmpbtmp.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="wtmp,btmp 로그 위치와 내용 확인">
       </div>
-      <p class="text-gray-600 text-sm text-center mt-2">특정 구문 Injection 공격 탐지</p>
+      <p class="text-gray-600 text-sm text-center mt-2">wtmp,btmp 로그 위치와 내용 확인</p>
     </div>
 
     <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
       <div class="flex-1 flex items-center justify-center overflow-hidden">
-        <img src="images/6.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="SYN Flag Scanning 탐지">
+        <img src="N,S/setuid.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
       </div>
-      <p class="text-gray-600 text-sm text-center mt-2">SYN Flag Scanning 탐지</p>
+      <p class="text-gray-600 text-sm text-center mt-2">set uid 설정 후 권한상승</p>
     </div>
   </div> 
+
+   <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+     <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="N,S/BOF.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">BOF 실행</p>
+  </div>
+</div>
 
   <!-- 설명 -->
   <section class="mb-6">
@@ -81,14 +89,14 @@
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
     <ul class="flex flex-wrap gap-2">
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Kali</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Snort</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Security Onion</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ossec</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Zabbix</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Open VPN</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Cisco-Asav</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Pfsense-Open VPN</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ubuntu</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full"></li>
     </ul>
   </section>
 </div>
@@ -124,3 +132,4 @@
     }
   });
 </script>
+
