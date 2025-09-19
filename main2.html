@@ -66,7 +66,7 @@
 
    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
      <div class="flex-1 flex items-center justify-center overflow-hidden">
-      <img src="N,S/BOF.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+      <img src="N,S/BOF.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="BOF 실행">
     </div>
     <p class="text-gray-600 text-sm text-center mt-2">BOF 실행</p>
   </div>
@@ -76,11 +76,8 @@
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">설명</h2>
     <p class="text-gray-700">
-      Cisco-Asav 방화벽 설정을 통해 Security-Level에 따른 정책설정을 통해 트래픽을 허용해 주는 것을 수행했습니다.<br>
-      방화벽 설정 예시 : access-list 100 extended permit tcp host 192.168.40.1 host 192.168.50.2 eq telnet<br><br>
-      Pfsense 설정을 통해 Open-VPN 설정도 수행했습니다.<br><br>
-      Snort 및 Security Onion 등 다양한 도구를 활용하여 특정 주소에서 HTTP나 ICMP를 탐지하고, 다양한 해킹 기법에 대한 탐지를 수행했습니다.<br>
-      Snort 대표 룰 예시 : alert tcp 192.168.16.105 -> 192.168.16.188 80 (msg:"Incoming HTTP"; sid:100007; rev:1;)
+      시스템에 대해 배우면서 일어날 수 있는 취약점들이나 코드를 만들어 직접 일반 사용자에서 루트권한을 얻게되는 여러가지 방법들을 배웠습니다.
+      특히, setuid 와 BOF 공격을 실행할 수 있는 코드들을 직접 만들어 보며 공격자 입장에서 어떤 방식으로 사용할 수 있는지 배웠습니다.
     </p>
   </section>
 
@@ -136,14 +133,20 @@
     </div>
 </div>
 
+  <!-- 설명 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">설명</h2>
+    <p class="text-gray-700">
+     로키 리눅스에 마리아디비를 설치 후 해당 조건에 맞는 테이블과 데이터 설정 후 문제에 맞는 구문을 사용하여 값을 찾아냈습니다.
+    </p>
+  </section>
+  
   <!-- 사용 기술 -->
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
     <ul class="flex flex-wrap gap-2">
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ubuntu</li>
       <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
-      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Mysql</li>
     </ul>
   </section>
 </div>
@@ -183,5 +186,6 @@
   });
 </script>
 <div>
+
 
 
