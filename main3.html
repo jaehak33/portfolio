@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>네트워크 , 시스템 보안 - 상세페이지</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+<div id="네트워크 , 시스템 보안" class="max-w-5xl mx-auto px-6 py-24">
+  <!-- Back Button -->
+  <button onclick="window.history.back()" 
+          class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+    <i class="ri-arrow-left-line"></i>
+    <span>Back</span>
+  </button>
+
+  <h2 class="text-3xl font-bold mb-6">네트워크 , 시스템 보안</h2>
+
+  <!-- Top Image -->
+  <div class="mb-6">
+    <img src="N,S/all.PNG" alt="전체 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">전체 토폴로지</p>
+  </div>
+
+  <!-- 이미지 카드 그리드 -->
+  <div class="grid grid-cols-5 md:grid-cols-5 gap-4 mb-6">
+    <!-- 카드 반복 -->
+    <div class="flex flex-col h-[280px] p-2 rounded">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/ND.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="sticky bit 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">sticky bit 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/Plen.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Password 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">Password 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/pass.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="password 만료 기간 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">password 만료 기간 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/wtmpbtmp.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="wtmp,btmp 로그 위치와 내용 확인">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">wtmp,btmp 로그 위치와 내용 확인</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/setuid.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">set uid 설정 후 권한상승</p>
+    </div>
+
+   <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+     <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="N,S/BOF.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">BOF 실행</p>
+  </div>
+ </div>
+
+  <!-- 설명 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">설명</h2>
+    <p class="text-gray-700">
+      Cisco-Asav 방화벽 설정을 통해 Security-Level에 따른 정책설정을 통해 트래픽을 허용해 주는 것을 수행했습니다.<br>
+      방화벽 설정 예시 : access-list 100 extended permit tcp host 192.168.40.1 host 192.168.50.2 eq telnet<br><br>
+      Pfsense 설정을 통해 Open-VPN 설정도 수행했습니다.<br><br>
+      Snort 및 Security Onion 등 다양한 도구를 활용하여 특정 주소에서 HTTP나 ICMP를 탐지하고, 다양한 해킹 기법에 대한 탐지를 수행했습니다.<br>
+      Snort 대표 룰 예시 : alert tcp 192.168.16.105 -> 192.168.16.188 80 (msg:"Incoming HTTP"; sid:100007; rev:1;)
+    </p>
+  </section>
+
+  
+  <!-- 사용 기술 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
+    <ul class="flex flex-wrap gap-2">
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ubuntu</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
+    </ul>
+  </section>
+</div>
+
+
+
+<!-- Top Image -->
+  <div class="mb-6">
+    <img src="N,S/all.PNG" alt="전체 구성도" class="w-full rounded-xl cursor-pointer" onclick="openModal(this)">
+    <p class="text-gray-700 mt-2">전체 토폴로지</p>
+  </div>
+
+<!-- 이미지 카드 그리드 -->
+  <div class="grid grid-cols-5 md:grid-cols-5 gap-4 mb-6">
+    <!-- 카드 반복 -->
+    <div class="flex flex-col h-[280px] p-2 rounded">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/ND.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="sticky bit 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">sticky bit 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/Plen.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="Password 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">Password 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/pass.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="password 만료 기간 설정">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">password 만료 기간 설정</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/wtmpbtmp.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="wtmp,btmp 로그 위치와 내용 확인">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">wtmp,btmp 로그 위치와 내용 확인</p>
+    </div>
+
+    <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+      <div class="flex-1 flex items-center justify-center overflow-hidden">
+        <img src="N,S/setuid.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+      </div>
+      <p class="text-gray-600 text-sm text-center mt-2">set uid 설정 후 권한상승</p>
+    </div>
+
+   <div class="flex flex-col h-[280px] p-2 rounded cursor-pointer" onclick="openModal(this.querySelector('img'))">
+     <div class="flex-1 flex items-center justify-center overflow-hidden">
+      <img src="N,S/BOF.PNG" class="max-h-full object-contain rounded cursor-pointer" onclick="openModal(this)" alt="set uid 설정 후 권한상승">
+    </div>
+    <p class="text-gray-600 text-sm text-center mt-2">BOF 실행</p>
+  </div>
+</div>
+
+  <!-- 사용 기술 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">사용 기술</h2>
+    <ul class="flex flex-wrap gap-2">
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Ubuntu</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Rocky</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Set Uid</li>
+      <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Buffer Overflow</li>
+    </ul>
+  </section>
+</div>
+
+
+
+
+<!-- 이미지 모달 -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <span class="absolute top-4 right-4 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
+  <img id="modalImage" src="" alt="확대 이미지" class="max-h-full max-w-full rounded-lg shadow-lg">
+</div>
+
+<!-- JS 모달 기능 -->
+<script>
+  function openModal(img) {
+    document.getElementById('modalImage').src = img.src;
+    document.getElementById('imageModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').classList.add('hidden');
+  }
+
+  // ESC 키 누르면 모달 닫기
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // 모달 바깥 클릭 시 닫기 (선택 사항)
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {  // 모달 백그라운드 클릭했을 때만 닫힘
+      closeModal();
+    }
+  });
+</script>
+<div>
+
