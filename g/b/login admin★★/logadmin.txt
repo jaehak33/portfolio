@@ -1,0 +1,3 @@
+15		-	    models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: UserModel, plain: true })
+	17	+	    models.sequelize.query(`SELECT * FROM Users WHERE email = $1 AND password = $2 AND deletedAt IS NULL`,
+	18	+	      { bind: [ req.body.email, security.hash(req.body.password) ], model: models.User, plain: true })
