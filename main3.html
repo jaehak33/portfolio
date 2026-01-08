@@ -26,7 +26,7 @@
 
   <h2 class="text-3xl font-bold mb-8">네트워크 · 시스템 보안</h2>
 
-  <!-- ================= 탭 1 : 개요 ================= -->
+  <!-- ================= 탭 1 : 모의해킹 ================= -->
   <div class="mb-4 bg-white rounded-xl border shadow">
     <button onclick="toggleSection('sec-overview')" class="w-full p-5 flex justify-between bg-gray-100">
       <span class="text-xl font-bold">모의해킹</span>
@@ -34,10 +34,13 @@
     </button>
 
     <div id="sec-overview" class="p-6 block">
-      <p class="text-gray-700 leading-relaxed">
-        Cisco ASAv 방화벽, pfSense OpenVPN, Snort, Security Onion 등을 활용한
-        네트워크 및 시스템 보안 실습 프로젝트입니다.
+      <p class="text-gray-700 leading-relaxed mb-6">
+        모의해킹 환경에서 정보 수집, 포트 스캔, 취약점 분석 및 공격 실습을 수행했습니다.
       </p>
+
+      <!-- 🔥 모의해킹 이미지 영역 -->
+      <div id="hacking-gallery"
+           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
 
@@ -49,8 +52,8 @@
     </button>
 
     <div id="sec-system" class="hidden p-6">
-      <!-- 🔥 자동으로 이미지가 들어갈 영역 -->
-      <div id="system-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+      <div id="system-gallery"
+           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
 
@@ -62,7 +65,8 @@
     </button>
 
     <div id="sec-network" class="hidden p-6">
-      <div id="network-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+      <div id="network-gallery"
+           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
 
@@ -70,7 +74,8 @@
 
 <!-- ================= 이미지 모달 ================= -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden flex items-center justify-center z-50">
-  <span onclick="closeModal()" class="absolute top-5 right-5 text-white text-4xl cursor-pointer">&times;</span>
+  <span onclick="closeModal()"
+        class="absolute top-5 right-5 text-white text-4xl cursor-pointer">&times;</span>
   <img id="modalImage" class="max-h-[90vh] max-w-full rounded shadow-lg">
 </div>
 
@@ -95,9 +100,16 @@ function closeModal() {
 
 /* ================= 이미지 데이터 ================= */
 
-/* 🔹 시스템 보안 이미지 */
+/* 🔹 모의해킹 */
+const hackingImages = [
+  { src: "g/a/ip_check.PNG", desc: "ifconfig 명령어를 활용한 IP 주소 확인" },
+  { src: "g/a/nmap_scan.PNG", desc: "Nmap을 이용한 포트 및 서비스 스캔" },
+  { src: "g/a/vuln_scan.PNG", desc: "취약점 스캐닝을 통한 공격 대상 분석" },
+  { src: "g/a/bruteforce.PNG", desc: "SSH Brute Force 공격 실습" }
+];
+
+/* 🔹 시스템 보안 */
 const systemImages = [
-  { src: "g/a/ip확인.PNG", desc: "ip확인" },
   { src: "N,S/Plen.PNG", desc: "Password 복잡도 설정" },
   { src: "N,S/pass.PNG", desc: "PW 만료 기간 설정" },
   { src: "N,S/wtmpbtmp.PNG", desc: "wtmp / btmp 로그 확인" },
@@ -105,25 +117,26 @@ const systemImages = [
   { src: "N,S/BOF.PNG", desc: "Buffer Overflow 공격 실습" }
 ];
 
-/* 🔹 네트워크 보안 이미지 */
+/* 🔹 네트워크 보안 */
 const networkImages = [
   { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
   { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
   { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
 ];
 
-/* ================= 갤러리 생성 ================= */
+/* ================= 갤러리 생성 함수 ================= */
 function renderGallery(data, targetId) {
   const target = document.getElementById(targetId);
 
   data.forEach(item => {
     const card = document.createElement("div");
     card.className =
-      "bg-gray-50 p-2 h-[260px] flex flex-col rounded border hover:shadow";
+      "bg-gray-50 p-2 h-[260px] flex flex-col rounded border hover:shadow transition";
 
     card.innerHTML = `
       <div class="flex-1 flex items-center justify-center bg-white rounded">
-        <img src="${item.src}" class="max-h-full max-w-full cursor-pointer"
+        <img src="${item.src}"
+             class="max-h-full max-w-full cursor-pointer"
              onclick="openModal(this)">
       </div>
       <p class="text-sm text-center mt-2">${item.desc}</p>
@@ -134,6 +147,7 @@ function renderGallery(data, targetId) {
 }
 
 /* ================= 실행 ================= */
+renderGallery(hackingImages, "hacking-gallery");
 renderGallery(systemImages, "system-gallery");
 renderGallery(networkImages, "network-gallery");
 </script>
