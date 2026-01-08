@@ -3,209 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>네트워크 , 시스템 보안 - 상세페이지</title>
+  <title>네트워크 · 시스템 보안 포트폴리오</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
   <style>
-    /* 부드러운 회전을 위한 스타일 */
-    .rotate-180 {
-      transform: rotate(180deg);
-    }
-    .transition-transform {
-      transition: transform 0.3s ease;
-    }
+    .rotate-180 { transform: rotate(180deg); }
+    .transition-transform { transition: transform 0.3s ease; }
   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-<div id="main-container" class="max-w-5xl mx-auto px-6 py-24">
-  
-  <!-- Back Button -->
-  <button onclick="window.history.back()" 
-          class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
+<div class="max-w-5xl mx-auto px-6 py-24">
+
+  <!-- Back -->
+  <button onclick="window.history.back()"
+    class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center gap-2">
+    <i class="ri-arrow-left-line"></i> Back
   </button>
 
-  <h2 class="text-3xl font-bold mb-8">네트워크 , 시스템 보안</h2>
+  <h2 class="text-3xl font-bold mb-8">네트워크 · 시스템 보안</h2>
 
-  <div class="mb-4 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <!-- 헤더 -->
-    <button onclick="toggleSection('sec-overview')" class="w-full flex justify-between items-center p-5 bg-gray-100 hover:bg-gray-200 transition text-left">
-      <span class="text-xl font-bold text-gray-800"> 개요 및 사용 기술</span>
+  <!-- ================= 탭 1 : 개요 ================= -->
+  <div class="mb-4 bg-white rounded-xl border shadow">
+    <button onclick="toggleSection('sec-overview')" class="w-full p-5 flex justify-between bg-gray-100">
+      <span class="text-xl font-bold">개요</span>
       <i id="icon-sec-overview" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
     </button>
-    
-    <!-- 내용 (기본적으로 열어두려면 hidden 제거) -->
+
     <div id="sec-overview" class="p-6 block">
-      <h3 class="text-lg font-semibold mb-2">프로젝트 설명</h3>
-      <p class="text-gray-700 leading-relaxed mb-6">
-        Cisco-Asav 방화벽 설정을 통해 Security-Level에 따른 정책설정을 통해 트래픽을 허용해 주는 것을 수행했습니다.<br>
-        방화벽 설정 예시 : <code class="bg-gray-100 px-2 py-0.5 rounded text-sm text-red-600">access-list 100 extended permit tcp host 192.168.40.1 host 192.168.50.2 eq telnet</code><br><br>
-        Pfsense 설정을 통해 Open-VPN 설정도 수행했습니다.<br><br>
-        Snort 및 Security Onion 등 다양한 도구를 활용하여 특정 주소에서 HTTP나 ICMP를 탐지하고, 다양한 해킹 기법에 대한 탐지를 수행했습니다.<br>
-        Snort 대표 룰 예시 : <code class="bg-gray-100 px-2 py-0.5 rounded text-sm text-blue-600">alert tcp 192.168.16.105 -> 192.168.16.188 80 (msg:"Incoming HTTP"; sid:100007; rev:1;)</code>
+      <p class="text-gray-700 leading-relaxed">
+        Cisco ASAv 방화벽, pfSense OpenVPN, Snort, Security Onion 등을 활용한
+        네트워크 및 시스템 보안 실습 프로젝트입니다.
       </p>
-
-      <h3 class="text-lg font-semibold mb-2">사용 기술 스택</h3>
-      <ul class="flex flex-wrap gap-2">
-        <li class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Ubuntu</li>
-        <li class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Rocky Linux</li>
-        <li class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Set Uid</li>
-        <li class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Buffer Overflow</li>
-        <li class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Snort</li>
-        <li class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Cisco ASAv</li>
-      </ul>
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- 탭 2: 전체 토폴로지 -->
-  <!-- ========================================== -->
-  <div class="mb-4 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <button onclick="toggleSection('sec-topology')" class="w-full flex justify-between items-center p-5 bg-gray-100 hover:bg-gray-200 transition text-left">
-      <span class="text-xl font-bold text-gray-800"> 전체 구성도 (Topology)</span>
-      <i id="icon-sec-topology" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
-    </button>
-    
-    <div id="sec-topology" class="hidden p-6">
-      <div class="flex flex-col items-center">
-        <img src="N,S/all.PNG" alt="전체 구성도" class="w-full max-w-3xl rounded-xl shadow-md cursor-pointer hover:opacity-95 transition" onclick="openModal(this)">
-        <p class="text-gray-500 mt-2 text-sm">이미지를 클릭하면 확대됩니다.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- 탭 3: 시스템 보안 상세 설정 -->
-  <!-- ========================================== -->
-  <div class="mb-4 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <button onclick="toggleSection('sec-system')" class="w-full flex justify-between items-center p-5 bg-gray-100 hover:bg-gray-200 transition text-left">
-      <span class="text-xl font-bold text-gray-800"> 시스템 보안 상세 (Linux Security)</span>
+  <!-- ================= 탭 2 : 시스템 보안 ================= -->
+  <div class="mb-4 bg-white rounded-xl border shadow">
+    <button onclick="toggleSection('sec-system')" class="w-full p-5 flex justify-between bg-gray-100">
+      <span class="text-xl font-bold">시스템 보안</span>
       <i id="icon-sec-system" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
     </button>
-    
+
     <div id="sec-system" class="hidden p-6">
-      <!-- 이미지 카드 그리드 -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        
-        <!-- 카드 1 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/ND.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="sticky bit 설정">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">Sticky Bit 설정</p>
-        </div>
-
-        <!-- 카드 2 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/Plen.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="Password 설정">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">Password 복잡도 설정</p>
-        </div>
-
-        <!-- 카드 3 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/pass.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="password 만료 기간">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">PW 만료 기간 설정</p>
-        </div>
-
-        <!-- 카드 4 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/wtmpbtmp.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="로그 확인">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">wtmp/btmp 로그 확인</p>
-        </div>
-
-        <!-- 카드 5 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/setuid.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="SetUID 권한상승">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">SetUID 권한 상승 실습</p>
-        </div>
-
-        <!-- 카드 6 -->
-        <div class="bg-gray-50 flex flex-col h-[260px] p-2 rounded border border-gray-200 hover:shadow-md transition">
-          <div class="flex-1 flex items-center justify-center overflow-hidden bg-white rounded">
-            <img src="N,S/BOF.PNG" class="max-h-full max-w-full object-contain cursor-pointer" onclick="openModal(this)" alt="BOF 실행">
-          </div>
-          <p class="text-gray-700 text-sm font-medium text-center mt-2">Buffer Overflow (BOF)</p>
-        </div>
-
-      </div>
+      <!-- 🔥 자동으로 이미지가 들어갈 영역 -->
+      <div id="system-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
 
-  <div class="mb-4 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <button onclick="toggleSection('sec-network')" class="w-full flex justify-between items-center p-5 bg-gray-100 hover:bg-gray-200 transition text-left">
-      <span class="text-xl font-bold text-gray-800"> 네트워크 보안 (Network Security)</span>
+  <!-- ================= 탭 3 : 네트워크 보안 ================= -->
+  <div class="mb-4 bg-white rounded-xl border shadow">
+    <button onclick="toggleSection('sec-network')" class="w-full p-5 flex justify-between bg-gray-100">
+      <span class="text-xl font-bold">네트워크 보안</span>
       <i id="icon-sec-network" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
     </button>
-    
+
     <div id="sec-network" class="hidden p-6">
-      <p class="text-gray-600 mb-4">여기에 네트워크 보안 관련 이미지나 설명을 추가할 수 있습니다.</p>
-      <!-- 필요시 여기에 이미지 그리드 추가 -->
+      <div id="network-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
 
 </div>
 
-<!-- 이미지 모달 -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden p-4">
-  <span class="absolute top-5 right-5 text-white text-4xl cursor-pointer hover:text-gray-300 transition" onclick="closeModal()">&times;</span>
-  <img id="modalImage" src="" alt="확대 이미지" class="max-h-[90vh] max-w-full rounded shadow-lg object-contain">
+<!-- ================= 이미지 모달 ================= -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden flex items-center justify-center z-50">
+  <span onclick="closeModal()" class="absolute top-5 right-5 text-white text-4xl cursor-pointer">&times;</span>
+  <img id="modalImage" class="max-h-[90vh] max-w-full rounded shadow-lg">
 </div>
 
-<!-- Scripts -->
+<!-- ================= 스크립트 ================= -->
 <script>
-  // 아코디언 토글 기능
-  function toggleSection(id) {
-    const content = document.getElementById(id);
-    const icon = document.getElementById('icon-' + id);
-    
-    if (content.classList.contains('hidden')) {
-      content.classList.remove('hidden');
-      icon.classList.add('rotate-180'); // 화살표 회전
-    } else {
-      content.classList.add('hidden');
-      icon.classList.remove('rotate-180'); // 화살표 원위치
-    }
-  }
+/* ================= 공통 기능 ================= */
+function toggleSection(id) {
+  const content = document.getElementById(id);
+  const icon = document.getElementById("icon-" + id);
+  content.classList.toggle("hidden");
+  icon.classList.toggle("rotate-180");
+}
 
-  // 모달 기능
-  function openModal(img) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    modalImg.src = img.src;
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
-  }
+function openModal(img) {
+  document.getElementById("modalImage").src = img.src;
+  document.getElementById("imageModal").classList.remove("hidden");
+}
 
-  function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = ''; // 배경 스크롤 복구
-  }
+function closeModal() {
+  document.getElementById("imageModal").classList.add("hidden");
+}
 
-  // ESC 키 누르면 모달 닫기
-  document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-      closeModal();
-    }
+/* ================= 이미지 데이터 ================= */
+
+/* 🔹 시스템 보안 이미지 */
+const systemImages = [
+  { src: "N,S/ND.PNG", desc: "Sticky Bit 설정" },
+  { src: "N,S/Plen.PNG", desc: "Password 복잡도 설정" },
+  { src: "N,S/pass.PNG", desc: "PW 만료 기간 설정" },
+  { src: "N,S/wtmpbtmp.PNG", desc: "wtmp / btmp 로그 확인" },
+  { src: "N,S/setuid.PNG", desc: "SetUID 권한 상승 실습" },
+  { src: "N,S/BOF.PNG", desc: "Buffer Overflow 공격 실습" }
+];
+
+/* 🔹 네트워크 보안 이미지 */
+const networkImages = [
+  { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
+  { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
+  { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
+];
+
+/* ================= 갤러리 생성 ================= */
+function renderGallery(data, targetId) {
+  const target = document.getElementById(targetId);
+
+  data.forEach(item => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-gray-50 p-2 h-[260px] flex flex-col rounded border hover:shadow";
+
+    card.innerHTML = `
+      <div class="flex-1 flex items-center justify-center bg-white rounded">
+        <img src="${item.src}" class="max-h-full max-w-full cursor-pointer"
+             onclick="openModal(this)">
+      </div>
+      <p class="text-sm text-center mt-2">${item.desc}</p>
+    `;
+
+    target.appendChild(card);
   });
+}
 
-  // 모달 바깥 클릭 시 닫기
-  document.getElementById('imageModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeModal();
-    }
-  });
+/* ================= 실행 ================= */
+renderGallery(systemImages, "system-gallery");
+renderGallery(networkImages, "network-gallery");
 </script>
 
 </body>
