@@ -11,6 +11,30 @@
   <style>
     .rotate-180 { transform: rotate(180deg); }
     .transition-transform { transition: transform 0.3s ease; }
+
+    /* 모달 배경 */
+    #imageModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+    #imageModal.hidden {
+      display: none;
+    }
+
+    /* 모달 이미지 */
+    #modalImage {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      user-select: none;
+    }
+
     /* 모달 좌우 버튼 */
     .modal-arrow {
       position: absolute;
@@ -24,9 +48,56 @@
       background: rgba(0,0,0,0.3);
       padding: 0 10px;
       border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .modal-arrow:hover {
+      background: rgba(0,0,0,0.6);
     }
     .modal-arrow.left { left: 15px; }
     .modal-arrow.right { right: 15px; }
+
+    /* 썸네일 래퍼 */
+    .thumbnail-wrapper {
+      overflow-x: auto;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0.25rem 0.5rem;
+      background: white;
+      border-radius: 0.25rem;
+      display: flex;
+      gap: 0.25rem;
+    }
+    .thumbnail-wrapper img {
+      max-height: 70px;
+      max-width: 70px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+    .thumbnail-wrapper img:hover {
+      transform: scale(1.1);
+    }
+
+    /* 카드 */
+    .card {
+      background-color: #f9fafb; /* bg-gray-50 */
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb; /* border-gray-200 */
+      display: flex;
+      flex-direction: column;
+      min-height: 140px;
+      max-width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    }
   </style>
 </head>
 
@@ -52,8 +123,7 @@
     <div id="sec-overview" class="p-6 block">
       <p class="text-gray-700 leading-relaxed mb-6">CTF 풀이입니다.</p>
 
-      <div id="hacking-gallery"
-           class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+      <div id="hacking-gallery" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
     </div>
   </div>
 
@@ -65,8 +135,7 @@
     </button>
 
     <div id="sec-system" class="hidden p-6">
-      <div id="system-gallery"
-           class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+      <div id="system-gallery" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
     </div>
   </div>
 
@@ -78,163 +147,181 @@
     </button>
 
     <div id="sec-network" class="hidden p-6">
-      <div id="network-gallery"
-           class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+      <div id="network-gallery" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
     </div>
   </div>
 
 </div>
 
-<!-- ================= 이미지 모달 ================= -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden flex items-center justify-center z-50 relative">
-  <span onclick="closeModal()"
-        class="absolute top-5 right-5 text-white text-4xl cursor-pointer z-60">&times;</span>
-  <span class="modal-arrow left" onclick="prevImage()">&#10094;</span>
-  <img id="modalImage" class="max-h-[90vh] max-w-full rounded shadow-lg z-50">
-  <span class="modal-arrow right" onclick="nextImage()">&#10095;</span>
+<!-- 모달 -->
+<div id="imageModal" class="hidden" onclick="closeModal(event)">
+  <i class="ri-close-line absolute top-6 right-6 text-white text-4xl cursor-pointer z-60" onclick="closeModal(event)"></i>
+  <i class="ri-arrow-left-line modal-arrow left" onclick="prevImage(event)"></i>
+  <img id="modalImage" src="" alt="Modal Image" draggable="false" />
+  <i class="ri-arrow-right-line modal-arrow right" onclick="nextImage(event)"></i>
 </div>
 
 <script>
-/* ================= 공통 기능 ================= */
-function toggleSection(id) {
-  const content = document.getElementById(id);
-  const icon = document.getElementById("icon-" + id);
-  content.classList.toggle("hidden");
-  icon.classList.toggle("rotate-180");
-}
-
-/* ================= 이미지 데이터 ================= */
-
-/* 🔹 모의해킹 (문자열/배열 둘 다 지원) */
-const hackingImages = [
-  { src: "g/a/ip확인.PNG", desc: ".ova파일 다운로드 후 vm으로 올렸을 때의 화면" },
-  { src: "g/a/포트스캐닝결과.PNG", desc: "Nmap을 이용한 포트 및 서비스 스캔" },
-  { src: "g/a/80포트.PNG", desc: "80포트 확인 결과" },
-  { src: "g/a/8080포트확인,소스에이상한점확인.PNG", desc: "8080포트 확인 결과" },
-  { src: "g/a/id와패스워드확인.PNG", desc: "mynote.txt 확인 결과" },
-  { src: "g/a/디렉토리스캐닝결괴.PNG", desc: "디렉토리 스캐닝 결과" },
-  {
-    src: [
-      "g/a/modules.PNG",
-      "g/a/plugins.PNG",
-      "g/a/bootstrap.PNG",
-      "g/a/config.PNG",
-      "g/a/themes.PNG",
-      "g/a/vendor.PNG",
-      "g/a/backend.PNG",
-    ],
-    desc: "디렉토리 스캐닝 확인"
+  /* ================= 토글 섹션 ================= */
+  function toggleSection(id) {
+    const content = document.getElementById(id);
+    const icon = document.getElementById("icon-" + id);
+    content.classList.toggle("hidden");
+    icon.classList.toggle("rotate-180");
   }
-];
 
-/* 🔹 시스템 보안 (기존 방식 그대로) */
-const systemImages = [
-  { src: "N,S/Plen.PNG", desc: "Password 복잡도 설정" },
-  { src: "N,S/pass.PNG", desc: "PW 만료 기간 설정" },
-  { src: "N,S/wtmpbtmp.PNG", desc: "wtmp / btmp 로그 확인" },
-  { src: "N,S/setuid.PNG", desc: "SetUID 권한 상승 실습" },
-  { src: "N,S/BOF.PNG", desc: "Buffer Overflow 공격 실습" }
-];
+  /* ================= 이미지 데이터 ================= */
 
-/* 🔹 네트워크 보안 (기존 방식 그대로) */
-const networkImages = [
-  { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
-  { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
-  { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
-];
+  /* 🔹 모의해킹 */
+  const hackingImages = [
+    { src: "g/a/ip확인.PNG", desc: ".ova파일 다운로드 후 vm으로 올렸을 때의 화면" },
+    { src: "g/a/포트스캐닝결과.PNG", desc: "Nmap을 이용한 포트 및 서비스 스캔" },
+    { src: "g/a/80포트.PNG", desc: "80포트 확인 결과" },
+    { src: "g/a/8080포트확인,소스에이상한점확인.PNG", desc: "8080포트 확인 결과" },
+    { src: "g/a/id와패스워드확인.PNG", desc: "mynote.txt 확인 결과" },
+    { src: "g/a/디렉토리스캐닝결괴.PNG", desc: "디렉토리 스캐닝 결과" },
+    {
+      src: [
+        "g/a/modules.PNG",
+        "g/a/plugins.PNG",
+        "g/a/bootstrap.PNG",
+        "g/a/config.PNG",
+        "g/a/themes.PNG",
+        "g/a/vendor.PNG",
+        "g/a/backend.PNG",
+      ],
+      desc: "디렉토리 스캐닝 확인"
+    }
+  ];
 
-/* ================= 갤러리 생성 ================= */
-function renderGallery(data, targetId) {
-  const target = document.getElementById(targetId);
+  /* 🔹 시스템 보안 */
+  const systemImages = [
+    { src: "N,S/Plen.PNG", desc: "Password 복잡도 설정" },
+    { src: "N,S/pass.PNG", desc: "PW 만료 기간 설정" },
+    { src: "N,S/wtmpbtmp.PNG", desc: "wtmp / btmp 로그 확인" },
+    { src: "N,S/setuid.PNG", desc: "SetUID 권한 상승 실습" },
+    { src: "N,S/BOF.PNG", desc: "Buffer Overflow 공격 실습" }
+  ];
 
-  data.forEach((item, idx) => {
-    const card = document.createElement("div");
-    card.className =
-      "bg-gray-50 p-2 flex flex-col rounded border hover:shadow transition cursor-pointer";
-    card.style.minHeight = "140px";
+  /* 🔹 네트워크 보안 */
+  const networkImages = [
+    { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
+    { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
+    { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
+  ];
 
-    // 이미지 여러장일 경우 작은 썸네일로 모두 표시 (가로 스크롤 가능)
-    let imagesHTML = "";
+  /* ================= 갤러리 생성 ================= */
+  function renderGallery(data, targetId) {
+    const target = document.getElementById(targetId);
 
-    if (Array.isArray(item.src)) {
-      imagesHTML = `<div class="flex gap-1 overflow-x-auto p-1 bg-white rounded">`;
-      item.src.forEach(src => {
-        imagesHTML += `
-          <img src="${src}"
-               class="max-h-[70px] max-w-[70px] object-cover flex-shrink-0 rounded"
+    data.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // 이미지 여러장일 경우 작은 썸네일로 모두 표시 (가로 스크롤 가능)
+      let imagesHTML = "";
+
+      if (Array.isArray(item.src)) {
+        imagesHTML = `<div class="thumbnail-wrapper">`;
+        item.src.forEach((src, index) => {
+          imagesHTML += `
+            <img src="${src}"
+                 alt="${item.desc}"
+                 data-index="${index}">
+          `;
+        });
+        imagesHTML += `</div>`;
+      } else {
+        imagesHTML = `
+          <img src="${item.src}"
+               class="max-h-[140px] max-w-full object-contain rounded"
                alt="${item.desc}">
         `;
-      });
-      imagesHTML += `</div>`;
-    } else {
-      imagesHTML = `
-        <img src="${item.src}"
-             class="max-h-[140px] max-w-full object-contain rounded"
-             alt="${item.desc}">
+      }
+
+      card.innerHTML = `
+        <div class="flex-1 flex flex-col justify-center items-center bg-white rounded mb-2">
+          ${imagesHTML}
+        </div>
+        <p class="text-xs text-center px-1 break-words">${item.desc}</p>
       `;
-    }
 
-    card.innerHTML = `
-      <div class="flex-1 flex flex-col justify-center items-center bg-white rounded mb-2">
-        ${imagesHTML}
-      </div>
-      <p class="text-xs text-center px-1 break-words">${item.desc}</p>
-    `;
+      // 클릭 시 해당 카드 첫 이미지부터 모달 열기
+      card.onclick = (e) => {
+        // 썸네일 이미지 클릭 시 해당 이미지 인덱스부터 열기
+        if (e.target.tagName === "IMG" && e.target.closest(".thumbnail-wrapper")) {
+          const imgs = item.src;
+          if (Array.isArray(imgs)) {
+            currentImages = imgs;
+            currentIndex = Number(e.target.dataset.index);
+          } else {
+            currentImages = [imgs];
+            currentIndex = 0;
+          }
+          updateModalImage();
+          document.getElementById("imageModal").classList.remove("hidden");
+          e.stopPropagation();
+          return;
+        }
+        // 카드 클릭 시 첫 번째 이미지부터 열기
+        openModalWithImages(item.src);
+      };
 
-    // 클릭 시 해당 카드 첫 이미지부터 모달 열기
-    card.onclick = () => openModalWithImages(item.src);
-
-    target.appendChild(card);
-  });
-}
-
-/* ================= 모달 이미지 슬라이드 기능 ================= */
-let currentImages = [];
-let currentIndex = 0;
-
-function openModalWithImages(images) {
-  // images가 배열이 아닐 경우 배열로 감싸기
-  currentImages = Array.isArray(images) ? images : [images];
-  currentIndex = 0;
-  updateModalImage();
-  document.getElementById("imageModal").classList.remove("hidden");
-}
-
-function updateModalImage() {
-  const modalImg = document.getElementById("modalImage");
-  modalImg.src = currentImages[currentIndex];
-}
-
-function closeModal() {
-  document.getElementById("imageModal").classList.add("hidden");
-}
-
-function prevImage() {
-  if (currentImages.length <= 1) return;
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateModalImage();
-}
-
-function nextImage() {
-  if (currentImages.length <= 1) return;
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateModalImage();
-}
-
-/* ================= 실행 ================= */
-renderGallery(hackingImages, "hacking-gallery");
-renderGallery(systemImages, "system-gallery");
-renderGallery(networkImages, "network-gallery");
-
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closeModal();
-  } else if (e.key === "ArrowLeft") {
-    prevImage();
-  } else if (e.key === "ArrowRight") {
-    nextImage();
+      target.appendChild(card);
+    });
   }
-});
+
+  /* ================= 모달 이미지 슬라이드 기능 ================= */
+  let currentImages = [];
+  let currentIndex = 0;
+
+  function openModalWithImages(images) {
+    currentImages = Array.isArray(images) ? images : [images];
+    currentIndex = 0;
+    updateModalImage();
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function updateModalImage() {
+    const modalImg = document.getElementById("modalImage");
+    modalImg.src = currentImages[currentIndex];
+  }
+
+  function closeModal(e) {
+    // 모달 외부 클릭 시만 닫기, 내부 클릭 방지
+    if (e.target.id === "imageModal" || e.target.classList.contains("ri-close-line")) {
+      document.getElementById("imageModal").classList.add("hidden");
+    }
+  }
+
+  function prevImage(e) {
+    e.stopPropagation();
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateModalImage();
+  }
+
+  function nextImage(e) {
+    e.stopPropagation();
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateModalImage();
+  }
+
+  /* ================= 실행 ================= */
+  renderGallery(hackingImages, "hacking-gallery");
+  renderGallery(systemImages, "system-gallery");
+  renderGallery(networkImages, "network-gallery");
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeModal({target: document.getElementById("imageModal")});
+    } else if (e.key === "ArrowLeft") {
+      prevImage({stopPropagation: () => {}});
+    } else if (e.key === "ArrowRight") {
+      nextImage({stopPropagation: () => {}});
+    }
+  });
 </script>
 
 </body>
