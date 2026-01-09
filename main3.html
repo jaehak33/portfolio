@@ -141,7 +141,7 @@ function renderGallery(data, targetId) {
   data.forEach(item => {
     const card = document.createElement("div");
     card.className =
-      "bg-gray-50 p-2 h-[260px] flex flex-col rounded border hover:shadow transition";
+      "bg-gray-50 p-2 h-[260px] flex flex-col rounded border hover:shadow transition overflow-y-auto";
 
     let imagesHTML = "";
 
