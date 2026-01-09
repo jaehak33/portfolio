@@ -18,6 +18,7 @@
 
 <div class="max-w-5xl mx-auto px-6 py-24">
 
+  <!-- Back -->
   <button onclick="window.history.back()"
     class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center gap-2">
     <i class="ri-arrow-left-line"></i> Back
@@ -25,7 +26,7 @@
 
   <h2 class="text-3xl font-bold mb-8">네트워크 · 시스템 보안</h2>
 
-  <!-- ================= 모의해킹 ================= -->
+  <!-- ================= 탭 1 : 모의해킹 ================= -->
   <div class="mb-4 bg-white rounded-xl border shadow">
     <button onclick="toggleSection('sec-overview')" class="w-full p-5 flex justify-between bg-gray-100">
       <span class="text-xl font-bold">모의해킹</span>
@@ -34,7 +35,34 @@
 
     <div id="sec-overview" class="p-6 block">
       <p class="text-gray-700 leading-relaxed mb-6">CTF 풀이입니다.</p>
+
       <div id="hacking-gallery"
+           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+    </div>
+  </div>
+
+  <!-- ================= 탭 2 : 시스템 보안 ================= -->
+  <div class="mb-4 bg-white rounded-xl border shadow">
+    <button onclick="toggleSection('sec-system')" class="w-full p-5 flex justify-between bg-gray-100">
+      <span class="text-xl font-bold">시스템 보안</span>
+      <i id="icon-sec-system" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
+    </button>
+
+    <div id="sec-system" class="hidden p-6">
+      <div id="system-gallery"
+           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+    </div>
+  </div>
+
+  <!-- ================= 탭 3 : 네트워크 보안 ================= -->
+  <div class="mb-4 bg-white rounded-xl border shadow">
+    <button onclick="toggleSection('sec-network')" class="w-full p-5 flex justify-between bg-gray-100">
+      <span class="text-xl font-bold">네트워크 보안</span>
+      <i id="icon-sec-network" class="ri-arrow-down-s-line text-2xl transition-transform"></i>
+    </button>
+
+    <div id="sec-network" class="hidden p-6">
+      <div id="network-gallery"
            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
     </div>
   </div>
@@ -49,7 +77,7 @@
 </div>
 
 <script>
-/* ================= 공통 ================= */
+/* ================= 공통 기능 ================= */
 function toggleSection(id) {
   const content = document.getElementById(id);
   const icon = document.getElementById("icon-" + id);
@@ -67,6 +95,8 @@ function closeModal() {
 }
 
 /* ================= 이미지 데이터 ================= */
+
+/* 🔹 모의해킹 (문자열/배열 둘 다 지원) */
 const hackingImages = [
   { src: "g/a/ip확인.PNG", desc: ".ova파일 다운로드 후 vm으로 올렸을 때의 화면" },
   { src: "g/a/포트스캐닝결과.PNG", desc: "Nmap을 이용한 포트 및 서비스 스캔" },
@@ -74,7 +104,6 @@ const hackingImages = [
   { src: "g/a/8080포트확인,소스에이상한점확인.PNG", desc: "8080포트 확인 결과" },
   { src: "g/a/id와패스워드확인.PNG", desc: "mynote.txt 확인 결과" },
   { src: "g/a/디렉토리스캐닝결괴.PNG", desc: "디렉토리 스캐닝 결과" },
-
   {
     src: [
       "g/a/80포트.PNG",
@@ -85,7 +114,23 @@ const hackingImages = [
   }
 ];
 
-/* ================= 갤러리 렌더링 ================= */
+/* 🔹 시스템 보안 (기존 방식 그대로) */
+const systemImages = [
+  { src: "N,S/Plen.PNG", desc: "Password 복잡도 설정" },
+  { src: "N,S/pass.PNG", desc: "PW 만료 기간 설정" },
+  { src: "N,S/wtmpbtmp.PNG", desc: "wtmp / btmp 로그 확인" },
+  { src: "N,S/setuid.PNG", desc: "SetUID 권한 상승 실습" },
+  { src: "N,S/BOF.PNG", desc: "Buffer Overflow 공격 실습" }
+];
+
+/* 🔹 네트워크 보안 (기존 방식 그대로) */
+const networkImages = [
+  { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
+  { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
+  { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
+];
+
+/* ================= 갤러리 생성 ================= */
 function renderGallery(data, targetId) {
   const target = document.getElementById(targetId);
 
@@ -96,7 +141,7 @@ function renderGallery(data, targetId) {
 
     let imagesHTML = "";
 
-    // ⭐ 핵심: 문자열 / 배열 자동 처리
+    // ⭐ 핵심: src가 문자열인지 배열인지 자동 판단
     if (Array.isArray(item.src)) {
       item.src.forEach(src => {
         imagesHTML += `
@@ -126,6 +171,8 @@ function renderGallery(data, targetId) {
 
 /* ================= 실행 ================= */
 renderGallery(hackingImages, "hacking-gallery");
+renderGallery(systemImages, "system-gallery");
+renderGallery(networkImages, "network-gallery");
 </script>
 
 </body>
