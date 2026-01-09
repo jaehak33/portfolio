@@ -173,6 +173,11 @@ function renderGallery(data, targetId) {
 renderGallery(hackingImages, "hacking-gallery");
 renderGallery(systemImages, "system-gallery");
 renderGallery(networkImages, "network-gallery");
+document.addEventListener("keydown", function (e) {
+ if (e.key === "Escape") {
+    closeModal();
+  }
+});
 </script>
 
 </body>
