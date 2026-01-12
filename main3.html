@@ -73,6 +73,129 @@
       background-color: #f3f4f6; border-radius: 0.5rem; padding: 0.5rem;
       display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       cursor: pointer; transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-4">
+
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- 섹션 1: Hacking -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-2">Hacking & Web Security</h2>
+      <div id="hacking-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- 섹션 2: System Security -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-green-500 pl-2">System Security (OWASP Juice Shop)</h2>
+      <div id="system-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- 섹션 3: Network Security -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-purple-500 pl-2">Network Security</h2>
+      <div id="network-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+  </div>
+
+  <!-- 이미지 모달 -->
+  <div id="imageModal" class="hidden" onclick="closeModal(event)">
+    <div class="modal-arrow left" onclick="prevImage(event)"><i class="ri-arrow-left-s-line"></i></div>
+    <img id="modalImage" src="" alt="확대 이미지" onclick="event.stopPropagation()">
+    <div class="modal-arrow right" onclick="nextImage(event)"><i class="ri-arrow-right-s-line"></i></div>
+    <div class="absolute top-5 right-5 text-white text-3xl cursor-pointer" onclick="closeModal(event)">
+      <i class="ri-close-line"></i>
+    </div>
+  </div>
+
+<script>
+  /* 
+     ================= 데이터 설정 ================= 
+     사용자님이 보내주신 파일명과 경로를 그대로 적용했습니다.
+     (Product Tampering 부분에 쉼표가 빠져있던 오류를 수정했습니다.)
+  */
+
+  /* 1. Hacking */
+  const hackingImages = [
+      { src: "g/a/웹페이지를만드는기능이있는거같음.PNG", desc: "mynote.txt에서 얻은 아이디와 비밀번호로 로그인" },
+      { src: "g/a/페이지만들어짐.PNG", desc: "페이지를 만드는 기능을 실험 결과 만들어짐" },  
+      { src: "g/a/간단한웹셸코드작성후 저장.PNG", desc: "리버스 셸 코드 작성 후 저장" },
+      { src: "g/a/리스닝 후 실행.PNG", desc: "리스닝 후 테스트페이지 접근" },
+      { src: "g/a/간단한정보수집.PNG", desc: "연결 성공 후 간단한 정보 수집" },
+      { src: "g/a/파이썬 setuid확인.PNG", desc: "정보 수집 중 파이썬 사용 가능 확인" },
+      { src: "g/a/루트권한획득후루트플래그확인.PNG", desc: "파이썬 언어를 사용하여 권한상승 시도 후 루트플래그 확인" }
+  ];
+
+  /* 2. System Security (별 개수 순 정렬: 1개 -> 6개) */
+  const systemImages = [
+    // 1 Star (★)
+    {
+      src: [
+        "g/b/DOM XSS★/DOM XSS시작.PNG",
+        "g/b/DOM XSS★/두번쨰.PNG",
+        "g/b/DOM XSS★/실행됨.PNG",
+        "g/b/DOM XSS★/취약코드부분.PNG",
+        "g/b/DOM XSS★/코드수정.PNG"
+      ],
+      desc: "DOM XSS (★): 검색창에 iframe 태그를 삽입하여 사용자 브라우저에서 스크립트 실행"
+    },
+
+    // 2 Stars (★★)
+    {
+      src: [
+        "g/b/login admin★★/시작.PNG",
+        "g/b/login admin★★/인젝션가능.PNG",
+        "g/b/login admin★★/힌트일껄.PNG",
+        "g/b/login admin★★/쿼리무시.PNG",
+        "g/b/login admin★★/어드민로그인.PNG",
+        "g/b/login admin★★/코드문제부분.PNG",
+        "g/b/login admin★★/코드수정방안.PNG"
+      ],
+      desc: "Login Admin (★★): 이메일 필드에 SQL Injection Payload를 주입하여 관리자 권한 획득"
+    },
+
+    // 3 Stars (★★★)
+    {
+      src: [
+        "g/b/Product Tampering★★★/캡처.PNG",
+        "g/b/Product Tampering★★★/경로찾기.png",
+        "g/b/Product Tampering★★★/경로에서해당번호찾음.png",
+        "g/b/Product Tampering★★★/해당데이터바꿀때PUT작동확인.png",
+        "g/b/Product Tampering★★★/PUT으로 바꾸고 컨텐트타입추가후 옵션변경.png",
+        "g/b/Product Tampering★★★/바뀜.png",
+        "g/b/Product Tampering★★★/코드문제점.png",
+        "g/b/Product Tampering★★★/수정.PNG"
+      ],
+      desc: "Product Tampering (★★★): Burp Suite를 이용해 HTTP 요청을 가로채고 제품 링크(href)를 무단으로 변조"
+    },
+
+    // 4 Stars (★★★★)
+    {
+      src: [
+        "g/b/Christmas Special★★★★/1.png",
+        "g/b/Christmas Special★★★★/2.png",
+        "g/b/Christmas Special★★★★/3.png",
+        "g/b/Christmas Special★★★★/4.png"
+      ],
+      desc: "Christmas Special (★★★★): SQL Injection을 통해 2014년 숨겨진 크리스마스 프로모션 상품 강제 주문"
+    },
+
+    // 5 Stars (★★★★★)
+    {
+      src: [
+        "g/b/Kill Chatbot★★★★★/1.png",
+        "g/b/Kill Chatbot★★★★★/2.png",
+        "g/b/Kill Chatbot★★★★★/3.png",
+        "g/b/Kill Chatbot★★★★★/4.png",
+        "g/b/Kill Chatbot★★★★★/5.png",
+        "g/b/Kill Chatbot★★★★★/6.png",
+        "g/b/Kill Chatbot★★★★★/7.png"
+      ],
+      desc: "Kill Chatbot (★★★★★): 챗봇 로직의 취약점을 분석하고 악용하여 챗봇 프로세스 종료(DoS)"
+    },
 
     // 6 Stars (★★★★★★)
     {
