@@ -9,82 +9,82 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 
   <style>
-    /* 기본 스타일 */
+    /* 처음에 보내드렸던 스타일 유지 */
     .rotate-180 { transform: rotate(180deg); }
     .transition-transform { transition: transform 0.3s ease; }
 
     /* 모달 스타일 */
     #imageModal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
       display: flex; justify-content: center; align-items: center; z-index: 50;
     }
     #imageModal.hidden { display: none; }
+    
     #modalImage {
-      max-width: 95vw; max-height: 85vh; border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5); user-select: none;
+      max-width: 90vw; max-height: 80vh; border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8); user-select: none;
     }
+
     .modal-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
       color: white; font-size: 3rem; cursor: pointer; user-select: none; z-index: 60;
-      background: rgba(0,0,0,0.3); padding: 0 15px; border-radius: 8px; transition: background 0.3s;
+      background: rgba(0,0,0,0.3); padding: 0 10px; border-radius: 5px; transition: background 0.3s;
     }
     .modal-arrow:hover { background: rgba(0,0,0,0.6); }
-    .modal-arrow.left { left: 20px; }
-    .modal-arrow.right { right: 20px; }
+    .modal-arrow.left { left: 15px; }
+    .modal-arrow.right { right: 15px; }
 
-    /* 썸네일 리스트 스타일 */
+    /* 썸네일 리스트 (가로 스크롤) */
     .thumbnail-wrapper {
       overflow-x: auto; max-width: 100%; box-sizing: border-box;
-      padding: 0.5rem; background: white; border-radius: 0.25rem;
-      display: flex; gap: 0.4rem; scrollbar-width: thin;
+      padding: 0.25rem 0.5rem; background: white; border-radius: 0.25rem;
+      display: flex; gap: 0.25rem;
     }
-    .thumbnail-wrapper::-webkit-scrollbar { height: 6px; }
-    .thumbnail-wrapper::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 3px; }
     .thumbnail-wrapper img {
-      height: 70px; width: auto; object-fit: cover; flex-shrink: 0;
-      border-radius: 4px; cursor: pointer; border: 1px solid #e5e7eb; transition: opacity 0.2s;
+      max-height: 70px; max-width: 70px; object-fit: cover; flex-shrink: 0;
+      border-radius: 0.25rem; cursor: pointer; border: 1px solid #ddd;
     }
-    .thumbnail-wrapper img:hover { opacity: 0.7; border-color: #3b82f6; }
+    .thumbnail-wrapper img:hover { opacity: 0.8; }
     
     /* 카드 스타일 */
     .card {
-      background-color: #f3f4f6; border-radius: 0.75rem; padding: 0.75rem;
-      display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background-color: #f3f4f6; border-radius: 0.5rem; padding: 0.5rem;
+      display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: pointer; transition: transform 0.2s;
     }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+    .card:hover { transform: translateY(-2px); }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans p-6">
+<body class="bg-gray-100 text-gray-800 font-sans p-4">
 
-  <div class="max-w-7xl mx-auto space-y-12">
+  <div class="max-w-6xl mx-auto space-y-8">
     
     <!-- 섹션 1: Hacking -->
     <section>
-      <h2 class="text-3xl font-bold mb-6 border-l-8 border-blue-600 pl-4 text-gray-900">Hacking & Web Security</h2>
-      <div id="hacking-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-2">Hacking & Web Security</h2>
+      <div id="hacking-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
     </section>
 
-    <!-- 섹션 2: System Security (OWASP Juice Shop) - 별 개수 순 정렬 -->
+    <!-- 섹션 2: System Security -->
     <section>
-      <h2 class="text-3xl font-bold mb-6 border-l-8 border-green-600 pl-4 text-gray-900">System Security (OWASP Juice Shop)</h2>
-      <div id="system-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-green-500 pl-2">System Security (OWASP Juice Shop)</h2>
+      <div id="system-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
     </section>
 
     <!-- 섹션 3: Network Security -->
     <section>
-      <h2 class="text-3xl font-bold mb-6 border-l-8 border-purple-600 pl-4 text-gray-900">Network Security</h2>
-      <div id="network-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+      <h2 class="text-2xl font-bold mb-4 border-l-4 border-purple-500 pl-2">Network Security</h2>
+      <div id="network-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
     </section>
 
   </div>
 
-  <!-- 이미지 확대 모달 -->
+  <!-- 이미지 모달 -->
   <div id="imageModal" class="hidden" onclick="closeModal(event)">
     <div class="modal-arrow left" onclick="prevImage(event)"><i class="ri-arrow-left-s-line"></i></div>
     <img id="modalImage" src="" alt="확대 이미지" onclick="event.stopPropagation()">
     <div class="modal-arrow right" onclick="nextImage(event)"><i class="ri-arrow-right-s-line"></i></div>
-    <div class="absolute top-6 right-6 text-white text-4xl cursor-pointer hover:text-gray-300 transition" onclick="closeModal(event)">
+    <div class="absolute top-5 right-5 text-white text-3xl cursor-pointer" onclick="closeModal(event)">
       <i class="ri-close-line"></i>
     </div>
   </div>
@@ -92,21 +92,22 @@
 <script>
   /* 
      ================= 데이터 설정 ================= 
-     [중요] 각 폴더 안에 있는 사진 파일명을 1.png, 2.png, 3.png... 순서로 변경해주세요.
+     사용자님이 보내주신 파일명과 경로를 그대로 적용했습니다.
+     (Product Tampering 부분에 쉼표가 빠져있던 오류를 수정했습니다.)
   */
 
-  /* 1. Hacking 데이터 (기존 유지) */
+  /* 1. Hacking */
   const hackingImages = [
-      { src: "g/a/웹페이지를만드는기능이있는거같음.PNG", desc: "초기 접근: 취약한 페이지 기능 발견 및 계정 정보 획득" },
-      { src: "g/a/페이지만들어짐.PNG", desc: "기능 테스트: 페이지 생성 기능을 통한 입력값 검증 부재 확인" },  
-      { src: "g/a/간단한웹셸코드작성후 저장.PNG", desc: "Exploit 작성: 리버스 셸(Reverse Shell) 코드 주입" },
-      { src: "g/a/리스닝 후 실행.PNG", desc: "연결 시도: Netcat 리스닝 상태에서 웹 셸 실행" },
-      { src: "g/a/간단한정보수집.PNG", desc: "초기 거점 확보: 서버 내부 정보 수집 (Reconnaissance)" },
-      { src: "g/a/파이썬 setuid확인.PNG", desc: "권한 상승 분석: Python 바이너리의 SetUID 설정 확인" },
-      { src: "g/a/루트권한획득후루트플래그확인.PNG", desc: "루트 권한 탈취: Python을 이용한 권한 상승 및 Flag 획득" }
+      { src: "g/a/웹페이지를만드는기능이있는거같음.PNG", desc: "mynote.txt에서 얻은 아이디와 비밀번호로 로그인" },
+      { src: "g/a/페이지만들어짐.PNG", desc: "페이지를 만드는 기능을 실험 결과 만들어짐" },  
+      { src: "g/a/간단한웹셸코드작성후 저장.PNG", desc: "리버스 셸 코드 작성 후 저장" },
+      { src: "g/a/리스닝 후 실행.PNG", desc: "리스닝 후 테스트페이지 접근" },
+      { src: "g/a/간단한정보수집.PNG", desc: "연결 성공 후 간단한 정보 수집" },
+      { src: "g/a/파이썬 setuid확인.PNG", desc: "정보 수집 중 파이썬 사용 가능 확인" },
+      { src: "g/a/루트권한획득후루트플래그확인.PNG", desc: "파이썬 언어를 사용하여 권한상승 시도 후 루트플래그 확인" }
   ];
 
-  /* 2. System Security 데이터 (별 개수 순 정렬: 1개 -> 6개) */
+  /* 2. System Security (별 개수 순 정렬: 1개 -> 6개) */
   const systemImages = [
     // 1 Star (★)
     {
@@ -117,7 +118,7 @@
         "g/a/b/DOM XSS★/취약한코드부분.PNG",
         "g/a/b/DOM XSS★/코드수정.PNG"
       ],
-      desc: "DOM XSS (★): 검색창에 iframe 태그를 삽입하여 사용자 브라우저에서 스크립트 실행 (DOM 기반 XSS)"
+      desc: "DOM XSS (★): 검색창에 iframe 태그를 삽입하여 사용자 브라우저에서 스크립트 실행"
     },
 
     // 2 Stars (★★)
@@ -131,7 +132,7 @@
         "g/b/login admin★★/코드문제부분.PNG",
         "g/b/login admin★★/코드수정방안.PNG"
       ],
-      desc: "Login Admin (★★): 이메일 필드에 SQL Injection Payload(' OR true--)를 주입하여 비밀번호 없이 관리자 권한 획득"
+      desc: "Login Admin (★★): 이메일 필드에 SQL Injection Payload를 주입하여 관리자 권한 획득"
     },
 
     // 3 Stars (★★★)
@@ -143,7 +144,7 @@
         "g/b/Product Tampering★★★/해당데이터바꿀때PUT작동확인.png",
         "g/b/Product Tampering★★★/PUT으로 바꾸고 컨텐트타입추가후 옵션변경.png",
         "g/b/Product Tampering★★★/바뀜.png",
-        "g/b/Product Tampering★★★/코드문제점.png"
+        "g/b/Product Tampering★★★/코드문제점.png",
         "g/b/Product Tampering★★★/수정.PNG"
       ],
       desc: "Product Tampering (★★★): Burp Suite를 이용해 HTTP 요청을 가로채고 제품 링크(href)를 무단으로 변조"
@@ -157,7 +158,7 @@
         "g/a/b/Christmas Special★★★★/3.png",
         "g/a/b/Christmas Special★★★★/4.png"
       ],
-      desc: "Christmas Special (★★★★): SQL Injection을 통해 2014년 숨겨진 크리스마스 프로모션 상품을 강제로 주문"
+      desc: "Christmas Special (★★★★): SQL Injection을 통해 2014년 숨겨진 크리스마스 프로모션 상품 강제 주문"
     },
 
     // 5 Stars (★★★★★)
@@ -171,7 +172,7 @@
         "g/a/b/Kill Chatbot★★★★★/6.png",
         "g/a/b/Kill Chatbot★★★★★/7.png"
       ],
-      desc: "Kill Chatbot (★★★★★): 챗봇 로직의 취약점을 분석하고 악용하여 챗봇 프로세스를 종료(DoS)시킴"
+      desc: "Kill Chatbot (★★★★★): 챗봇 로직의 취약점을 분석하고 악용하여 챗봇 프로세스 종료(DoS)"
     },
 
     // 6 Stars (★★★★★★)
@@ -187,15 +188,14 @@
     }
   ];
 
-  /* 3. Network Security 데이터 (기존 유지) */
+  /* 3. Network Security */
   const networkImages = [
-    { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지 구성도" },
-    { src: "N,S/snort.PNG", desc: "Snort IDS/IPS 트래픽 탐지 및 로그 분석" },
-    { src: "N,S/pfsense.PNG", desc: "pfSense 방화벽 및 OpenVPN 보안 설정" }
+    { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
+    { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
+    { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
   ];
 
-
-  /* ================= 렌더링 함수 ================= */
+  /* ================= 갤러리 렌더링 함수 (원본 스타일) ================= */
   function renderGallery(data, targetId) {
     const target = document.getElementById(targetId);
     if (!target) return;
@@ -204,38 +204,48 @@
       const card = document.createElement("div");
       card.className = "card";
 
+      // 이미지 여러장일 경우 작은 썸네일로 모두 표시 (가로 스크롤)
       let imagesHTML = "";
-      const imagesList = Array.isArray(item.src) ? item.src : [item.src];
-
-      if (imagesList.length > 0) {
-          imagesHTML = `<div class="thumbnail-wrapper">`;
-          imagesList.forEach((src, index) => {
-            // 이미지 로드 실패 시 스타일 유지하며 엑박 처리
-            imagesHTML += `
-              <img src="${src}"
-                   alt="${item.desc} - Step ${index+1}"
-                   data-index="${index}"
-                   data-group-idx="${idx}"
-                   onerror="this.style.opacity='0.3'">
-            `;
-          });
-          imagesHTML += `</div>`;
+      if (Array.isArray(item.src)) {
+        imagesHTML = `<div class="thumbnail-wrapper">`;
+        item.src.forEach((src, index) => {
+          imagesHTML += `
+            <img src="${src}"
+                 alt="${item.desc}"
+                 data-index="${index}"
+                 data-group-idx="${idx}"
+                 onerror="this.style.opacity='0.3'">
+          `;
+        });
+        imagesHTML += `</div>`;
+      } else {
+        imagesHTML = `
+          <div class="flex justify-center bg-white rounded mb-2">
+            <img src="${item.src}" 
+                 class="max-h-[70px] max-w-full object-contain"
+                 alt="${item.desc}"
+                 onerror="this.style.opacity='0.3'">
+          </div>
+        `;
       }
 
       card.innerHTML = `
-        <div class="flex-1 flex flex-col justify-center bg-white rounded-lg mb-3 overflow-hidden border border-gray-200">
-           ${imagesHTML}
+        <div class="flex-1 flex flex-col justify-center bg-white rounded mb-2 overflow-hidden">
+          ${imagesHTML}
         </div>
-        <p class="text-sm text-gray-700 text-center px-1 break-words font-semibold leading-relaxed">${item.desc}</p>
+        <p class="text-xs text-center px-1 break-words font-medium">${item.desc}</p>
       `;
 
+      // 클릭 시 모달 열기 이벤트
       card.onclick = (e) => {
         const targetImg = e.target.closest('img');
+        const imagesList = Array.isArray(item.src) ? item.src : [item.src];
+        
         if (targetImg && targetImg.closest('.thumbnail-wrapper')) {
-            const index = Number(targetImg.dataset.index);
-            openModal(imagesList, index);
+          const index = Number(targetImg.dataset.index);
+          openModal(imagesList, index);
         } else {
-            openModal(imagesList, 0);
+          openModal(imagesList, 0);
         }
       };
 
@@ -252,7 +262,6 @@
     currentIndex = index;
     updateModalImage();
     document.getElementById("imageModal").classList.remove("hidden");
-    document.body.style.overflow = 'hidden'; 
   }
 
   function updateModalImage() {
@@ -265,7 +274,6 @@
   function closeModal(e) {
     if (e.target.id === "imageModal" || e.target.closest(".absolute")) {
       document.getElementById("imageModal").classList.add("hidden");
-      document.body.style.overflow = '';
     }
   }
 
