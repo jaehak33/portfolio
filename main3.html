@@ -12,6 +12,28 @@
     /* 처음에 보내드렸던 스타일 유지 */
     .rotate-180 { transform: rotate(180deg); }
     .transition-transform { transition: transform 0.3s ease; }
+       
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background-color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .back-btn:hover {
+      background-color: #f3f4f6;
+      transform: scale(1.1);
+    }
+
 
     /* 모달 스타일 */
     #imageModal {
@@ -115,7 +137,7 @@
         "g/b/DOM XSS★/DOM XSS시작.PNG",
         "g/b/DOM XSS★/두번쨰.PNG",
         "g/b/DOM XSS★/실행됨.PNG",
-        "g/b/DOM XSS★/취약한코드부분.PNG",
+        "g/b/DOM XSS★/취약코드부분.PNG",
         "g/b/DOM XSS★/코드수정.PNG"
       ],
       desc: "DOM XSS (★): 검색창에 iframe 태그를 삽입하여 사용자 브라우저에서 스크립트 실행"
