@@ -3,53 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>네트워크 보안 - 상세페이지</title>
+  <title>프로젝트-상세페이지</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 </head>
 
 <body class="bg-gray-50 text-gray-900">
 
-<div id="네트워크 보안" class="max-w-5xl mx-auto px-6 py-24">
+<div id="네트워크-보안" class="max-w-5xl mx-auto px-6 py-24">
 
   <!-- Back Button -->
-  <button onclick="window.history.back()" 
-    class="mb-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition flex items-center space-x-2">
+  <button onclick="window.history.back()"
+    class="mb-8 px-4 py-2 bg-gray-800 text-white rounded-lg shadow
+           hover:bg-gray-700 transition flex items-center space-x-2">
     <i class="ri-arrow-left-line"></i>
     <span>Back</span>
   </button>
 
-  <h2 class="text-3xl font-bold mb-10">네트워크 보안</h2>
+  <!-- Title -->
+  <h2 class="text-3xl font-bold mb-10">프로젝트</h2>
 
-  <!-- 📄 PDF 썸네일 영역 -->
+  <!-- PDF 썸네일 -->
   <div class="flex justify-center">
-    <a href="./project.pdf" target="_blank"
+    <a href="./project.pdf" target="_blank" title="프로젝트 보고서 PDF 보기"
        class="group w-full max-w-3xl">
-
-      <!-- PDF 썸네일 -->
-      <div class="relative bg-white rounded-xl shadow-lg overflow-hidden
+      <div class="relative overflow-hidden rounded-xl shadow-lg
                   hover:shadow-2xl transition">
 
-        <!-- PDF iframe (첫 페이지 썸네일용) -->
-        <iframe
-          src="./project.pdf#page=1&zoom=100"
-          class="w-full h-[600px] pointer-events-none">
-        </iframe>
+        <!-- 썸네일 이미지 -->
+        <img src="PROSOME.png"
+             alt="프로젝트 보고서 PDF 썸네일"
+             class="w-full object-cover">
 
-        <!-- Hover 오버레이 -->
+        <!-- Hover Overlay -->
         <div class="absolute inset-0 bg-black bg-opacity-0
-                    group-hover:bg-opacity-30
+                    group-hover:bg-opacity-40
                     flex items-center justify-center transition">
           <span class="opacity-0 group-hover:opacity-100
-                       text-white text-lg font-semibold flex items-center gap-2">
+                       text-white text-lg font-semibold
+                       flex items-center gap-2">
             <i class="ri-file-pdf-line text-2xl"></i>
             프로젝트 보고서 PDF 열기
           </span>
         </div>
-      </div>
 
+      </div>
     </a>
   </div>
+
+  <!-- Optional: 간단한 안내 텍스트 -->
+  <p class="text-center mt-4 text-gray-700">
+    썸네일 클릭 시 PDF 보고서를 새 창에서 확인할 수 있습니다.
+  </p>
 
 </div>
 
