@@ -3,56 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>네트워크 보안 - 상세페이지</title>
+  <title>네트워크 · 시스템 보안 포트폴리오</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-</head>
 
-<body class="bg-gray-50 text-gray-900">
+  <style>
+    /* 처음에 보내드렸던 스타일 유지 */
+    .rotate-180 { transform: rotate(180deg); }
+    .transition-transform { transition: transform 0.3s ease; }
+       
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background-color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .back-btn:hover {
+      background-color: #f3f4f6;
+      transform: scale(1.1);
+    }
 
-<div id="네트워크-보안" class="max-w-5xl mx-auto px-6 py-24">
 
-  <!-- Back Button -->
-  <button onclick="window.history.back()"
-    class="mb-8 px-4 py-2 bg-gray-800 text-white rounded-lg shadow
-           hover:bg-gray-700 transition flex items-center space-x-2">
-    <i class="ri-arrow-left-line"></i>
-    <span>Back</span>
-  </button>
+    /* 모달 스타일 */
+    #imageModal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      display: flex; justify-content: center; align-items: center; z-index: 50;
+    }
+    #imageModal.hidden { display: none; }
+    
+    #modalImage {
+      max-width: 90vw; max-height: 80vh; border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8); user-select: none;
+    }
 
-  <!-- Title -->
-  <h2 class="text-3xl font-bold mb-10">프로젝트 pdf</h2>
+    .modal-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      color: white; font-size: 3rem; cursor: pointer; user-select: none; z-index: 60;
+      background: rgba(0,0,0,0.3); padding: 0 10px; border-radius: 5px; transition: background 0.3s;
+    }
+    .modal-arrow:hover { background: rgba(0,0,0,0.6); }
+    .modal-arrow.left { left: 15px; }
+    .modal-arrow.right { right: 15px; }
 
-  <!-- 📄 PDF 썸네일 영역 -->
-  <div class="flex justify-center">
-    <a href="./project.pdf" target="_blank"
-       class="group w-full max-w-3xl">
+    /* 썸네일 리스트 (가로 스크롤) */
+    .thumbnail-wrapper {
+      overflow-x: auto; max-width: 100%; box-sizing: border-box;
+      padding: 0.25rem 0.5rem; background: white; border-radius: 0.25rem;
+      display: flex; gap: 0.25rem;
+    }
+    .thumbnail-wrapper img {
+      max-height: 70px; max-width: 70px; object-fit: cover; flex-shrink: 0;
+      border-radius: 0.25rem; cursor: pointer; border: 1px solid #ddd;
+    }
+    .thumbnail-wrapper img:hover { opacity: 0.8; }
+    
+    /* 카드 스타일 */
+    .card {
+      background-color: #f3f4f6; border-radius: 0.5rem; padding: 0.5rem;
+      display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: pointer; transition: transform 0.2s;
 
-      <div class="relative overflow-hidden rounded-xl shadow-lg
-                  hover:shadow-2xl transition">
+    // 6 Stars (★★★★★★)
+    {
+      src: [
+        "g/b/SSRF★★★★★★/1.png",
+        "g/b/SSRF★★★★★★/2.png",
+        "g/b/SSRF★★★★★★/3.png",
+        "g/b/SSRF★★★★★★/4.png",
+        "g/b/SSRF★★★★★★/5.png"
+      ],
+      desc: "SSRF (★★★★★★): 서버 로컬 파일 시스템의 숨겨진 디렉터리(/ftp/quarantine)에 접근하여 악성코드 파일 탐색"
+    }
+  ];
 
-        <!-- PDF 썸네일 이미지 -->
-        <img src="images/pdf-cover.png"
-             alt="네트워크 보안 프로젝트 보고서 PDF"
-             class="w-full object-cover">
+  /* 3. Network Security */
+  const networkImages = [
+    { src: "N,S/all.PNG", desc: "전체 네트워크 토폴로지" },
+    { src: "N,S/snort.PNG", desc: "Snort 트래픽 탐지" },
+    { src: "N,S/pfsense.PNG", desc: "pfSense OpenVPN 구성" }
+  ];
 
-        <!-- Hover Overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-0
-                    group-hover:bg-opacity-40
-                    flex items-center justify-center transition">
-          <span class="opacity-0 group-hover:opacity-100
-                       text-white text-lg font-semibold
-                       flex items-center gap-2">
-            <i class="ri-file-pdf-line text-2xl"></i>
-            프로젝트 보고서 PDF 열기
-          </span>
+  /* ================= 갤러리 렌더링 함수 (원본 스타일) ================= */
+  function renderGallery(data, targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    data.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // 이미지 여러장일 경우 작은 썸네일로 모두 표시 (가로 스크롤)
+      let imagesHTML = "";
+      if (Array.isArray(item.src)) {
+        imagesHTML = `<div class="thumbnail-wrapper">`;
+        item.src.forEach((src, index) => {
+          imagesHTML += `
+            <img src="${src}"
+                 alt="${item.desc}"
+                 data-index="${index}"
+                 data-group-idx="${idx}"
+                 onerror="this.style.opacity='0.3'">
+          `;
+        });
+        imagesHTML += `</div>`;
+      } else {
+        imagesHTML = `
+          <div class="flex justify-center bg-white rounded mb-2">
+            <img src="${item.src}" 
+                 class="max-h-[70px] max-w-full object-contain"
+                 alt="${item.desc}"
+                 onerror="this.style.opacity='0.3'">
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="flex-1 flex flex-col justify-center bg-white rounded mb-2 overflow-hidden">
+          ${imagesHTML}
         </div>
+        <p class="text-xs text-center px-1 break-words font-medium">${item.desc}</p>
+      `;
 
-      </div>
-    </a>
-  </div>
+      // 클릭 시 모달 열기 이벤트
+      card.onclick = (e) => {
+        const targetImg = e.target.closest('img');
+        const imagesList = Array.isArray(item.src) ? item.src : [item.src];
+        
+        if (targetImg && targetImg.closest('.thumbnail-wrapper')) {
+          const index = Number(targetImg.dataset.index);
+          openModal(imagesList, index);
+        } else {
+          openModal(imagesList, 0);
+        }
+      };
 
-</div>
+      target.appendChild(card);
+    });
+  }
+
+  /* ================= 모달 기능 ================= */
+  let currentImages = [];
+  let currentIndex = 0;
+
+  function openModal(images, index) {
+    currentImages = images;
+    currentIndex = index;
+    updateModalImage();
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function updateModalImage() {
+    const modalImg = document.getElementById("modalImage");
+    if(currentImages.length > 0) {
+        modalImg.src = currentImages[currentIndex];
+    }
+  }
+
+  function closeModal(e) {
+    if (e.target.id === "imageModal" || e.target.closest(".absolute")) {
+      document.getElementById("imageModal").classList.add("hidden");
+    }
+  }
+
+  function prevImage(e) {
+    e.stopPropagation();
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateModalImage();
+  }
+
+  function nextImage(e) {
+    e.stopPropagation();
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateModalImage();
+  }
+
+  /* 실행 */
+  document.addEventListener("DOMContentLoaded", () => {
+      renderGallery(hackingImages, "hacking-gallery");
+      renderGallery(systemImages, "system-gallery");
+      renderGallery(networkImages, "network-gallery");
+  });
+
+  /* 키보드 이벤트 */
+  document.addEventListener("keydown", function (e) {
+    const modal = document.getElementById("imageModal");
+    if (modal.classList.contains("hidden")) return;
+
+    if (e.key === "Escape") {
+      closeModal({target: modal});
+    } else if (e.key === "ArrowLeft") {
+      prevImage(e);
+    } else if (e.key === "ArrowRight") {
+      nextImage(e);
+    }
+  });
+</script>
 
 </body>
 </html>
